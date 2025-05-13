@@ -31,7 +31,9 @@ import lab03.Notificacoes.Notificavel;
 public class Cliente implements CompararA {
     private String nome;
     private String email;
+    private String senha;
     private String telefone;
+    private Double saldo;
     private List<Ingresso> ingressos;
     private List<Notificavel> notificacoesPendentes;
     private List<Notificavel> notificacoesEnviadas;
@@ -42,10 +44,12 @@ public class Cliente implements CompararA {
      * @param email o email do cliente
      * @param telefone o telefone do cliente
      */
-    public Cliente(String nome, String email, String telefone){
+    public Cliente(String nome, String email, String senha, String telefone, Double saldo){
         this.nome = nome;
         this.email = email;
+        this.senha = senha;
         this.telefone = telefone;
+        this.saldo = saldo;
         this.ingressos = new ArrayList<Ingresso>();
         this.notificacoesPendentes = new ArrayList<Notificavel>();
         this.notificacoesEnviadas = new ArrayList<Notificavel>();
@@ -97,6 +101,46 @@ public class Cliente implements CompararA {
      */
     public void setTelefone(String telefone){
         this.telefone = telefone;
+    }
+    
+    /**
+     * Retorna o senha do cliente
+     * @return o senha do cliente
+     */
+    public String getSenha(){
+        return senha;
+    }
+    
+    /**
+     * Altera o senha do cliente para `senha` 
+     * @param senha o novo senha do cliente
+     */
+    public void setSenha(String senha){
+        this.senha = senha;
+    }
+    
+    /**
+     * Retorna o saldo do cliente
+     * @return o saldo do cliente
+     */
+    public Double getSaldo(){
+        return saldo;
+    }
+    
+    /**
+     * Altera o saldo do cliente para 'saldo' 
+     * @param saldo o novo saldo do cliente
+     */
+    public void setSaldo(Double saldo){
+        this.saldo = saldo;
+    }
+    
+    /**
+     * Adiciona dinheiro ao saldo do cliente 
+     * @param deposito o valor a ser depositado no saldo
+     */
+    public void depositarDinheiro(Double deposito){
+        this.saldo += deposito;
     }
 
     /**
