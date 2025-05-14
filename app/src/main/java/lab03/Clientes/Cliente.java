@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Set;
 
 import lab03.Ingresso;
+import lab03.Marketplace;
+import lab03.OfertaIngresso;
 import lab03.Eventos.Evento;
 import lab03.Exceptions.CancelamentoNaoPermitidoException;
 import lab03.Exceptions.IngressoNaoEncontradoException;
@@ -53,6 +55,92 @@ public class Cliente implements CompararA {
         this.ingressos = new ArrayList<Ingresso>();
         this.notificacoesPendentes = new ArrayList<Notificavel>();
         this.notificacoesEnviadas = new ArrayList<Notificavel>();
+    }
+
+    // Lança a exceção
+    public void oferecerIngressoParaVenda(Ingresso ingresso, double precoPedido, Marketplace marketplace){
+        if(!this.ingressos.contains(ingresso)) System.out.println("Você não tem esse ingresso");
+        marketplace.receberOFerta(this, ingresso, precoPedido);
+    }
+
+    // Lança exceções
+    public void comprarIngresso(OfertaIngresso oferta, Marketplace marketplace){
+        if(this.saldo < oferta.getPrecoPedido()) System.out.println("Saldo insuficiente");
+        if (!marketplace.listarOfertas().contains(oferta)) System.out.println("Essa oferta não existe");
+        marketplace.processarCompra(this, oferta);
+    }
+
+    /**
+     * Cancela um ingresso comprado
+     * Um ingresso só será removido com até 24 horas de antecedência
+     * do início do evento. Caso contrário, será lançada uma exceção.
+     * @param ingresso o ingresso a ser removido dos ingressos.
+     * @throws IngressoNaoEncontradoException Exceção para quando o
+     * ingresso não foi comprado pelo cliente
+     * @throws CancelamentoNaoPermitidoException Exceção para quando a
+     * data limite para o cancelamento do ingresso já foi ultrapassada
+     */
+    public void cancelarIngresso(Ingresso ingresso)
+    throws IngressoNaoEncontradoException, CancelamentoNaoPermitidoException {
+        if (ingressos.contains(ingresso)){
+            LocalDate dataLimiteCancelamento =
+            ingresso.getEvento()
+            .getData()
+            .minusDays(2);
+
+            if (LocalDate.now().isAfter(dataLimiteCancelamento)){
+                throw new CancelamentoNaoPermitidoException(
+                    "A data limite para o cancelamento já foi ultrapassada");
+            }
+            ingressos.remove(ingresso);
+
+        } else {
+            throw new IngressoNaoEncontradoException(
+                "O ingresso não foi encontrado");
+        }
+    }
+
+    /**
+     * Adiciona uma nova notificação à lista de notificações pendentes do cliente.
+     *
+     * @param notificacao a notificação a ser adicionada
+     */
+    public void adiconarNotificacao(Notificavel notificacao){
+        this.notificacoesPendentes.add(notificacao);
+    }
+
+    /**
+     * Envia todas as notificações pendentes para o cliente.
+     * 
+     * Após o envio, as notificações são movidas para a lista de notificações enviadas.
+     */
+    public void enviarNotificacoes(){
+        for (Notificavel notificacao : notificacoesPendentes){
+            notificacao.notificar();
+            notificacoesEnviadas.add(notificacao);
+        }
+        notificacoesPendentes.clear();
+    }
+
+    /**
+     * Compara este cliente com outro cliente e identifica os eventos em comum
+     * baseados nos ingressos adquiridos.
+     *
+     * @param outroCliente o outro cliente a ser comparado
+     * @return um conjunto de eventos que ambos os clientes possuem ingressos
+     */
+    public Set<Evento> compararA(Cliente outroCliente){
+        Set<Evento> eventosEmComum = new HashSet<Evento>();
+
+        for (Ingresso ingressoCliente : this.ingressos){
+            Evento eventoAtual = ingressoCliente.getEvento();
+            for (Ingresso ingressoOutroCliente : outroCliente.getIngressos()){
+                if (eventoAtual.equals(ingressoOutroCliente.getEvento())){
+                    eventosEmComum.add(eventoAtual);
+                }
+            }
+        }
+        return eventosEmComum;
     }
 
     /**
@@ -191,76 +279,4 @@ public class Cliente implements CompararA {
         return notificacoesEnviadas;
     }
 
-    /**
-     * Cancela um ingresso comprado
-     * Um ingresso só será removido com até 24 horas de antecedência
-     * do início do evento. Caso contrário, será lançada uma exceção.
-     * @param ingresso o ingresso a ser removido dos ingressos.
-     * @throws IngressoNaoEncontradoException Exceção para quando o
-     * ingresso não foi comprado pelo cliente
-     * @throws CancelamentoNaoPermitidoException Exceção para quando a
-     * data limite para o cancelamento do ingresso já foi ultrapassada
-     */
-    public void cancelarIngresso(Ingresso ingresso)
-    throws IngressoNaoEncontradoException, CancelamentoNaoPermitidoException {
-        if (ingressos.contains(ingresso)){
-            LocalDate dataLimiteCancelamento =
-            ingresso.getEvento()
-            .getData()
-            .minusDays(2);
-
-            if (LocalDate.now().isAfter(dataLimiteCancelamento)){
-                throw new CancelamentoNaoPermitidoException(
-                    "A data limite para o cancelamento já foi ultrapassada");
-            }
-            ingressos.remove(ingresso);
-
-        } else {
-            throw new IngressoNaoEncontradoException(
-                "O ingresso não foi encontrado");
-        }
-    }
-
-    /**
-     * Adiciona uma nova notificação à lista de notificações pendentes do cliente.
-     *
-     * @param notificacao a notificação a ser adicionada
-     */
-    public void adiconarNotificacao(Notificavel notificacao){
-        this.notificacoesPendentes.add(notificacao);
-    }
-
-    /**
-     * Envia todas as notificações pendentes para o cliente.
-     * 
-     * Após o envio, as notificações são movidas para a lista de notificações enviadas.
-     */
-    public void enviarNotificacoes(){
-        for (Notificavel notificacao : notificacoesPendentes){
-            notificacao.notificar();
-            notificacoesEnviadas.add(notificacao);
-        }
-        notificacoesPendentes.clear();
-    }
-
-    /**
-     * Compara este cliente com outro cliente e identifica os eventos em comum
-     * baseados nos ingressos adquiridos.
-     *
-     * @param outroCliente o outro cliente a ser comparado
-     * @return um conjunto de eventos que ambos os clientes possuem ingressos
-     */
-    public Set<Evento> compararA(Cliente outroCliente){
-        Set<Evento> eventosEmComum = new HashSet<Evento>();
-
-        for (Ingresso ingressoCliente : this.ingressos){
-            Evento eventoAtual = ingressoCliente.getEvento();
-            for (Ingresso ingressoOutroCliente : outroCliente.getIngressos()){
-                if (eventoAtual.equals(ingressoOutroCliente.getEvento())){
-                    eventosEmComum.add(eventoAtual);
-                }
-            }
-        }
-        return eventosEmComum;
-    }
 }

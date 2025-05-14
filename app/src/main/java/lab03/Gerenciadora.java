@@ -12,7 +12,7 @@ import lab03.Eventos.Organizadora;
 
 public class Gerenciadora {
     private HistoricoEventos historico;
-    private Double saldoComissao;
+    private Marketplace marketplace;
     private List<Ingresso> ingressosDisponiveis;
     private List<Ingresso> ingressosVendidos;
     private List<ImobiliariaDeEventos> imobiliarias; // A lista de todos os locais está aqui
@@ -21,7 +21,7 @@ public class Gerenciadora {
 
     public Gerenciadora(){
         this.historico = new HistoricoEventos();
-        this.saldoComissao = 0.0;
+        this.marketplace = new Marketplace(20);
         this.ingressosDisponiveis = new ArrayList<Ingresso>();
         this.ingressosVendidos = new ArrayList<Ingresso>();
         this.imobiliarias = new ArrayList<ImobiliariaDeEventos>();
@@ -46,10 +46,6 @@ public class Gerenciadora {
         simulador.Simular(this);
     }
 
-    public Double getSaldoComissao(){
-        return saldoComissao;
-    }
-
     public List<Ingresso> getIngressosDisponiveis(){
         return ingressosDisponiveis;
     }
@@ -64,6 +60,10 @@ public class Gerenciadora {
 
     public HistoricoEventos getHistorico(){
         return historico;
+    }
+
+    public Marketplace getmMarketplace(){
+        return marketplace;
     }
 
     public List<ImobiliariaDeEventos> getImobiliarias(){
