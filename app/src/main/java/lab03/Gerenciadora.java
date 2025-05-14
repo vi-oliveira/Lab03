@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import lab03.Clientes.Cliente;
+import lab03.Eventos.Evento;
 import lab03.Eventos.HistoricoEventos;
 import lab03.Eventos.ImobiliariaDeEventos;
 import lab03.Eventos.Organizadora;
@@ -28,12 +29,33 @@ public class Gerenciadora {
         this.clientes = new HashMap<String, Cliente>();
     }
 
-    
+    // ALTERAR PARA TER EXCEÇÃO DE SALDO E OUTROS LÇKDSJFALDKJF, ELE VAI LANÇAR E NÃO TEM TRY CATCH
+    public void venderIngresso(Evento evento, Ingresso ingresso, Cliente cliente){
+        try{
+            evento.venderIngresso(cliente, ingresso);
+            this.ingressosDisponiveis.remove(ingresso);
+            this.ingressosVendidos.add(ingresso);
+        } catch (Exception e) {
+            // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHH
+        }
+    }
 
     /*Cria um cenário fictício com exemplos de eventos e outras coisas */
     public void simularExemplo(){
         Simulador simulador = new Simulador();
         simulador.Simular(this);
+    }
+
+    public Double getSaldoComissao(){
+        return saldoComissao;
+    }
+
+    public List<Ingresso> getIngressosDisponiveis(){
+        return ingressosDisponiveis;
+    }
+
+    public List<Ingresso> getIngressosVendidos(){
+        return ingressosVendidos;
     }
 
     public HashMap<String, Cliente> getCLientes(){

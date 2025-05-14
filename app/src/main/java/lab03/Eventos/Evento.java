@@ -194,5 +194,6 @@ public abstract class Evento {
         }
         this.caracteristicas.getIngressosVendidos().addAll(ingressos);
         cliente.adicionarIngresso(ingressos);
+
     }
 }
