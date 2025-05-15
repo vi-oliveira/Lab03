@@ -20,6 +20,9 @@ import lab03.OfertaIngresso;
 import lab03.Eventos.Evento;
 import lab03.Exceptions.CancelamentoNaoPermitidoException;
 import lab03.Exceptions.IngressoNaoEncontradoException;
+import lab03.Exceptions.IngressoNaoPertenceAoClienteException;
+import lab03.Exceptions.OfertaNaoEncontradaException;
+import lab03.Exceptions.SaldoInsuficienteException;
 import lab03.Notificacoes.Notificavel;
 
 /**
@@ -58,15 +61,17 @@ public class Cliente implements CompararA {
     }
 
     // Lança a exceção
-    public void oferecerIngressoParaVenda(Ingresso ingresso, double precoPedido, Marketplace marketplace){
-        if(!this.ingressos.contains(ingresso)) System.out.println("Você não tem esse ingresso");
+    public void oferecerIngressoParaVenda(Ingresso ingresso, double precoPedido, Marketplace marketplace) 
+    throws IngressoNaoPertenceAoClienteException {
+        if(!this.ingressos.contains(ingresso)) throw new IngressoNaoPertenceAoClienteException("Você não tem esse ingresso");
         marketplace.receberOFerta(this, ingresso, precoPedido);
     }
 
     // Lança exceções
-    public void comprarIngresso(OfertaIngresso oferta, Marketplace marketplace){
-        if(this.saldo < oferta.getPrecoPedido()) System.out.println("Saldo insuficiente");
-        if (!marketplace.listarOfertas().contains(oferta)) System.out.println("Essa oferta não existe");
+    public void comprarIngresso(OfertaIngresso oferta, Marketplace marketplace)
+    throws SaldoInsuficienteException, OfertaNaoEncontradaException {
+        if(this.saldo < oferta.getPrecoPedido()) throw new SaldoInsuficienteException("Saldo insuficiente");
+        if (!marketplace.listarOfertas().contains(oferta)) throw new OfertaNaoEncontradaException("Essa oferta não existe");
         marketplace.processarCompra(this, oferta);
     }
 

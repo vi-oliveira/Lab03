@@ -4,6 +4,8 @@
 
 package lab03;
 
+import lab03.Clientes.Cliente;
+
 /**
  * Contém a estrutura de implementação da aplicação.
  * 
@@ -25,6 +27,17 @@ public class App {
         Gerenciadora gerenciadora = new Gerenciadora();
         gerenciadora.simularExemplo();
 
+        Cliente vendedor = gerenciadora.getCLientes().get("Alonso@gmail.com");
+        Ingresso ingressoASerVendido = vendedor.getIngressos().get(0);
+
+        System.out.println("Ingressos Antes: " + vendedor.getIngressos());
+        // System.out.println("Marketplace antes: " + gerenciadora.getmMarketplace().);
         
+        try {
+            vendedor.oferecerIngressoParaVenda(ingressoASerVendido, ingressoASerVendido.getPreco() - 20.0 , gerenciadora.getmMarketplace());
+        } catch (Exception e){}
+        
+        System.out.println("Ingressos Depois: " + vendedor.getIngressos());
+
     }
 }

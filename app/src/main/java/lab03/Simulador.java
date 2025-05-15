@@ -75,20 +75,23 @@ public class Simulador {
         Cliente alonso = new Cliente("Alonso", "Alonso@gmail.com", "senha", "1234-4321", 250.0);
         Cliente ana = new Cliente("Ana", "anana@unicamp.com", "qsdsijf", "9876-6789", 343000000000.0);
         Cliente gabriela = new Cliente("Gabriela", "EEEMAIL@gmail.com", "294748292", "9999-1111", 750.0);
-        Cliente cliente = new Cliente("cliente1", "email@email.com", "123", "1029-3847", 1000.0);
+        Cliente cliente = new Cliente("cliente1", "email", "123", "1029-3847", 1000.0);
 
         gerenciadora.getCLientes().put(alonso.getEmail(), alonso);
         gerenciadora.getCLientes().put(ana.getEmail(), ana);
         gerenciadora.getCLientes().put(gabriela.getEmail(), gabriela);
         gerenciadora.getCLientes().put(cliente.getEmail(), cliente);
 
-        Evento showAzul = gerenciadora.getHistorico().getEventos().get(0);
-        Ingresso ingressoAzul = gerenciadora.getIngressosDisponiveis().get(0);
-        gerenciadora.venderIngresso(showAzul, ingressoAzul, alonso);
-
-        Evento showMichael = gerenciadora.getHistorico().getEventos().get(1);
-        Ingresso ingressoMichael = gerenciadora.getIngressosDisponiveis().get(2);
-        gerenciadora.venderIngresso(showMichael, ingressoMichael, ana);
+        // Como o exemplo é planejado à mão, os erros não vão ocorrer, então não é necessário colocar nada no catch
+        try {
+            Evento showAzul = gerenciadora.getHistorico().getEventos().get(0);
+            Ingresso ingressoAzul = gerenciadora.getIngressosDisponiveis().get(0);
+            gerenciadora.venderIngressoFormaComum(showAzul, ingressoAzul, alonso);
+    
+            Evento showMichael = gerenciadora.getHistorico().getEventos().get(1);
+            Ingresso ingressoMichael = gerenciadora.getIngressosDisponiveis().get(2);
+            gerenciadora.venderIngressoFormaComum(showMichael, ingressoMichael, ana);
+        } catch (Exception e) {}
     }
 
     // Simular marketplace
