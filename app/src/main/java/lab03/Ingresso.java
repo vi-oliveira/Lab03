@@ -11,17 +11,17 @@ import lab03.Eventos.Evento;
 /**
  * Contém a estrutura de implementação de um Ingresso.
  */
-public class Ingresso {
+public class Ingresso implements Vendivel {
 
     private Evento evento;
-    private double preco;
+    private Double preco;
 
     /**
      * Construtor da classe Ingresso
      * @param evento o evento associado ao Ingresso
      * @param preco o preço do Ingresso
      */
-    public Ingresso(Evento evento, double preco) {
+    public Ingresso(Evento evento, Double preco) {
         this.evento = evento;
         this.preco = preco;
     }
@@ -30,7 +30,7 @@ public class Ingresso {
      * Retorna o preço do Ingresso
      * @return o preço do Ingresso
      */
-    public double getPreco() {
+    public Double getPreco() {
         return this.preco;
     }
 

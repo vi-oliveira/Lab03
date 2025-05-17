@@ -17,8 +17,11 @@ import java.util.Set;
 import lab03.Ingresso;
 import lab03.Marketplace;
 import lab03.OfertaIngresso;
+import lab03.Vendivel;
 import lab03.Eventos.Evento;
 import lab03.Exceptions.CancelamentoNaoPermitidoException;
+import lab03.Exceptions.EventoNaoEncontradoException;
+import lab03.Exceptions.IngressoEsgotadoException;
 import lab03.Exceptions.IngressoNaoEncontradoException;
 import lab03.Exceptions.IngressoNaoPertenceAoClienteException;
 import lab03.Exceptions.OfertaNaoEncontradaException;
@@ -68,9 +71,9 @@ public class Cliente implements CompararA {
     }
 
     // Lança exceções
-    public void comprarIngresso(OfertaIngresso oferta, Marketplace marketplace)
-    throws SaldoInsuficienteException, OfertaNaoEncontradaException {
-        if(this.saldo < oferta.getPrecoPedido()) throw new SaldoInsuficienteException("Saldo insuficiente");
+    public void comprarIngressoNoMarketPlace(Vendivel oferta, Marketplace marketplace)
+    throws SaldoInsuficienteException, OfertaNaoEncontradaException, IngressoEsgotadoException, EventoNaoEncontradoException {
+        if(this.saldo < oferta.getPreco()) throw new SaldoInsuficienteException("Saldo insuficiente");
         if (!marketplace.listarOfertas().contains(oferta)) throw new OfertaNaoEncontradaException("Essa oferta não existe");
         marketplace.processarCompra(this, oferta);
     }

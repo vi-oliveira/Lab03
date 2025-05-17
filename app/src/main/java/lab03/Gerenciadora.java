@@ -11,13 +11,13 @@ import lab03.Eventos.ImobiliariaDeEventos;
 import lab03.Eventos.Organizadora;
 import lab03.Exceptions.EventoNaoEncontradoException;
 import lab03.Exceptions.IngressoEsgotadoException;
+import lab03.Exceptions.OfertaNaoEncontradaException;
 import lab03.Exceptions.SaldoInsuficienteException;
 
 public class Gerenciadora {
     private HistoricoEventos historico;
     private Marketplace marketplace;
-    private List<Ingresso> ingressosDisponiveis;
-    private List<Ingresso> ingressosVendidos;
+    private Cliente usuarioAtual;
     private List<ImobiliariaDeEventos> imobiliarias; // A lista de todos os locais está aqui
     private List<Organizadora> organizadoras;
     private HashMap<String, Cliente> clientes;
@@ -25,32 +25,15 @@ public class Gerenciadora {
     public Gerenciadora(){
         this.historico = new HistoricoEventos();
         this.marketplace = new Marketplace(20);
-        this.ingressosDisponiveis = new ArrayList<Ingresso>();
-        this.ingressosVendidos = new ArrayList<Ingresso>();
+        this.usuarioAtual = null; // Na simulação de clientes, alterar para que seja feito por login
         this.imobiliarias = new ArrayList<ImobiliariaDeEventos>();
         this.organizadoras = new ArrayList<Organizadora>();
         this.clientes = new HashMap<String, Cliente>();
     }
-
-    public void venderIngressoFormaComum(Evento evento, Ingresso ingresso, Cliente cliente)
-    throws IngressoEsgotadoException, EventoNaoEncontradoException, SaldoInsuficienteException {
-            evento.venderIngresso(cliente, ingresso);
-            this.ingressosDisponiveis.remove(ingresso);
-            this.ingressosVendidos.add(ingresso);
-    }
     
-    public void venderIngressoFormaComum(Evento evento, List<Ingresso> ingressos, Cliente cliente)
-    throws IngressoEsgotadoException, EventoNaoEncontradoException, SaldoInsuficienteException {
-            evento.venderIngresso(cliente, ingressos);
-            this.ingressosDisponiveis.removeAll(ingressos);
-            this.ingressosVendidos.addAll(ingressos);
-    }
-    
-    public void venderIngressoDeCLiente(Cliente cliente, OfertaIngresso ofertaIngresso, Marketplace marketplace)
-    throws IngressoEsgotadoException, EventoNaoEncontradoException, SaldoInsuficienteException {
-            marketplace.processarCompra(cliente, ofertaIngresso);
-            this.ingressosDisponiveis.remove(ofertaIngresso.getIngresso());
-            this.ingressosVendidos.add(ofertaIngresso.getIngresso());
+    public void venderIngresso(Cliente cliente, Vendivel ingressoAVenda, Marketplace marketplace)
+    throws IngressoEsgotadoException, EventoNaoEncontradoException, SaldoInsuficienteException, OfertaNaoEncontradaException {
+        cliente.comprarIngressoNoMarketPlace(ingressoAVenda, marketplace);
     }
 
     /*Cria um cenário fictício com exemplos de eventos e outras coisas */
@@ -59,12 +42,8 @@ public class Gerenciadora {
         simulador.Simular(this);
     }
 
-    public List<Ingresso> getIngressosDisponiveis(){
-        return ingressosDisponiveis;
-    }
-
-    public List<Ingresso> getIngressosVendidos(){
-        return ingressosVendidos;
+    public void setUsuario(Cliente usuario) {
+        this.usuarioAtual = usuario;
     }
 
     public HashMap<String, Cliente> getCLientes(){
@@ -75,7 +54,7 @@ public class Gerenciadora {
         return historico;
     }
 
-    public Marketplace getmMarketplace(){
+    public Marketplace getMarketplace(){
         return marketplace;
     }
 

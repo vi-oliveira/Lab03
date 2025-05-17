@@ -15,17 +15,18 @@ public class Lab03Test {
     public void verificarCompraComum(){
         Gerenciadora gerenciadora = new Gerenciadora();
         gerenciadora.simularExemplo();
+        Marketplace marketplace = gerenciadora.getMarketplace();
 
-        int quantidadeIngressosDisponiveisAntes = gerenciadora.getIngressosDisponiveis().size();
+        int quantidadeIngressosDisponiveisAntes = marketplace.listarOfertas().size();
         Double saldoOriginal = gerenciadora.getCLientes().get("email").getSaldo();
-        Double saldoEsperado = saldoOriginal -  gerenciadora.getIngressosDisponiveis().get(0).getPreco();
+        Double saldoEsperado = saldoOriginal -  marketplace.listarOfertas().get(0).getPreco();
         
         try {
-            gerenciadora.venderIngressoFormaComum(gerenciadora.getHistorico().getEventos().get(0),
-            gerenciadora.getIngressosDisponiveis().get(0), gerenciadora.getCLientes().get("email"));
+            gerenciadora.venderIngresso(gerenciadora.getCLientes().get("email"),
+            marketplace.listarOfertas().get(0), marketplace);
         } catch (Exception e) {}
         
-        assertEquals(quantidadeIngressosDisponiveisAntes - 1, gerenciadora.getIngressosDisponiveis().size());
+        assertEquals(quantidadeIngressosDisponiveisAntes - 1, marketplace.listarOfertas().size());
         assertEquals(saldoEsperado, gerenciadora.getCLientes().get("email").getSaldo());
     }
 }

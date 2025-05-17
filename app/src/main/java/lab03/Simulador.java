@@ -64,7 +64,7 @@ public class Simulador {
         Ingresso ingressoMichael2 = new Ingresso(showMichael, showMichael.getPrecoIngresso());
         Ingresso ingressoEsporte = new Ingresso(jogoEsporte, jogoEsporte.getPrecoIngresso());
 
-        gerenciadora.getIngressosDisponiveis().addAll(Arrays.asList(
+        gerenciadora.getMarketplace().listarOfertas().addAll(Arrays.asList(
             ingressoShowAzul, ingressoShowAzul2,
             ingressoMichael, ingressoMichael2,
             ingressoEsporte));
@@ -82,15 +82,18 @@ public class Simulador {
         gerenciadora.getCLientes().put(gabriela.getEmail(), gabriela);
         gerenciadora.getCLientes().put(cliente.getEmail(), cliente);
 
+        gerenciadora.setUsuario(cliente);
+
         // Como o exemplo é planejado à mão, os erros não vão ocorrer, então não é necessário colocar nada no catch
         try {
             Evento showAzul = gerenciadora.getHistorico().getEventos().get(0);
-            Ingresso ingressoAzul = gerenciadora.getIngressosDisponiveis().get(0);
-            gerenciadora.venderIngressoFormaComum(showAzul, ingressoAzul, alonso);
+            Marketplace marketplace = gerenciadora.getMarketplace();
+            Ingresso ingressoAzul = (Ingresso) marketplace.listarOfertas().get(0);
+            gerenciadora.venderIngresso(alonso, ingressoAzul, marketplace);
     
             Evento showMichael = gerenciadora.getHistorico().getEventos().get(1);
-            Ingresso ingressoMichael = gerenciadora.getIngressosDisponiveis().get(2);
-            gerenciadora.venderIngressoFormaComum(showMichael, ingressoMichael, ana);
+            Ingresso ingressoMichael = (Ingresso) marketplace.listarOfertas().get(2);
+            gerenciadora.venderIngresso(ana, ingressoMichael, marketplace);
         } catch (Exception e) {}
     }
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab03.MainController">
+   <top>
+        <MenuBar>
+            <Menu text="File">
+                <MenuItem text="Open"/>
+                <MenuItem text="Save"/>
+            </Menu>
+        </MenuBar>
+    </top>
+    <center>
+        <Label text="Bem-vindo ao JavaFX!" />
+    </center>
+    <bottom>
+        <Button text="Sair" onAction="#handleExit" />
+    </bottom>
+</BorderPane>

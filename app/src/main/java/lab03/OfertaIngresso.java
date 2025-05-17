@@ -2,7 +2,7 @@ package lab03;
 
 import lab03.Clientes.Cliente;
 
-public class OfertaIngresso {
+public class OfertaIngresso implements Vendivel {
     private Ingresso ingresso;
     private Double precoPedido;
     private Cliente vendedor;
@@ -17,7 +17,7 @@ public class OfertaIngresso {
         return ingresso;
     }
 
-    public Double getPrecoPedido(){
+    public Double getPreco(){
         return precoPedido;
     }
     
