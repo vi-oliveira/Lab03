@@ -1,10 +1,12 @@
 package lab03.GUI;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,10 +20,13 @@ public class MarketplaceController extends NavegacaoController {
     private Label labelSaldo;
 
     @FXML
+    private Label labelErro;
+
+    @FXML
     private Button BotaoComprarIngressos;
 
     @FXML
-    private ListView<OfertaIngresso> listVendiveis;
+    private ListView<OfertaIngresso> listOfertaIngressos;
 
     @FXML
     public void initialize() {
@@ -33,7 +38,21 @@ public class MarketplaceController extends NavegacaoController {
 
         List<OfertaIngresso> ingressos = gerenciadora.getMarketplace().listarOfertas();
         ObservableList<OfertaIngresso> observableIngressos = FXCollections.observableArrayList(ingressos);
-        listVendiveis.setItems(observableIngressos);
+        listOfertaIngressos.setItems(observableIngressos);
     }
     
+    @FXML
+    void handleComprarIngresso(ActionEvent event) throws IOException {
+        Gerenciadora gerenciadora = Gerenciadora.getInstance();
+        OfertaIngresso ingressoSelecionado = listOfertaIngressos.getSelectionModel().getSelectedItem();
+        if (ingressoSelecionado == null) labelErro.setText("Nenhum ingresso selecionado");
+        else {
+            try {
+                gerenciadora.getUsuarioAtual().comprarIngressoNoMarketplace(ingressoSelecionado, gerenciadora.getMarketplace());
+            } catch (Exception e){
+                labelErro.setText(e.getMessage());
+            }
+        }
+        initialize();
+    }
 }

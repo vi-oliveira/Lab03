@@ -10,18 +10,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.stage.Stage;
 import lab03.Gerenciadora;
 import lab03.Ingresso;
 import lab03.Eventos.Evento;
 
 public class EventoEspecificoController extends NavegacaoController {
-    private Evento eventoAtual;
+    private Evento eventoAtual = null;
 
     public Evento getEventoAtual(){
         return eventoAtual;
@@ -41,6 +37,12 @@ public class EventoEspecificoController extends NavegacaoController {
     
     @FXML
     private Label labelSaldo;
+    
+    @FXML
+    private Label labelErro;
+    
+    @FXML
+    private Label botaoComprarIngresso;
 
     @FXML
     private ListView<Ingresso> listIngressos;
@@ -81,10 +83,15 @@ public class EventoEspecificoController extends NavegacaoController {
     void handleComprarIngresso(ActionEvent event) throws IOException {
         Gerenciadora gerenciadora = Gerenciadora.getInstance();
         Ingresso ingressoSelecionado = listIngressos.getSelectionModel().getSelectedItem();
-        try {
-            gerenciadora.venderIngressoFormaComum(eventoAtual, ingressoSelecionado, gerenciadora.getUsuarioAtual());
-        } catch (Exception e){
-            System.out.println(e.getMessage());
+        if (ingressoSelecionado == null) labelErro.setText("Nenhum ingresso selecionado");
+        else {
+            try {
+                gerenciadora.venderIngressoFormaComum(eventoAtual, ingressoSelecionado, gerenciadora.getUsuarioAtual());
+            } catch (Exception e){
+                labelErro.setText(e.getMessage());
+            }
+    
+            carregarEvento(eventoAtual);
         }
     }
 

@@ -33,6 +33,7 @@ public class Marketplace {
         comprador.setSaldo((comprador.getSaldo() - oferta.getPrecoPedido()));
         comprador.adicionarIngresso(oferta.getIngresso());
         this.saldoComissao += valorComissao;
+        this.ingressosAVenda.remove(oferta);
 
         // O novo saldo do vendedor é o saldo antigo, somado ao valor da venda do ingresso, sem a parte que foi para a comissão;
         vendedor.setSaldo(vendedor.getSaldo() + (oferta.getPrecoPedido() - valorComissao));

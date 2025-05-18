@@ -1,13 +1,20 @@
 package lab03.GUI;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 import lab03.Gerenciadora;
 import lab03.Ingresso;
 
@@ -24,7 +31,9 @@ public class PerfilController extends NavegacaoController {
     
     @FXML
     private Label labelSaldo;
-
+    
+    @FXML
+    private Button botaoFazerDeposito;
 
     @FXML
     private ListView<Ingresso> listIngressos;
@@ -48,4 +57,18 @@ public class PerfilController extends NavegacaoController {
         listIngressos.setItems(observableIngressos);
     }
     
+    @FXML
+    public void handleJanelaDepositar(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DepositoWindow.fxml"));
+        Parent root = loader.load();
+        DepositoController depositoController = loader.getController();
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
+        stage.setScene(scene);
+        stage.setTitle("Depositar");
+        stage.show();
+        depositoController.setPerfilController(this);
+    }
 }

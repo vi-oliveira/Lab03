@@ -11,30 +11,31 @@
    <top>
       <AnchorPane prefHeight="48.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="botaoPerfil" layoutX="542.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleAcessoPerfil" text="Perfil" AnchorPane.rightAnchor="14.799999999999997" />
-            <Button fx:id="buttonDev" layoutX="495.0" layoutY="12.0" mnemonicParsing="false" text="Dev" AnchorPane.rightAnchor="68.2" />
-            <Label layoutX="238.0" layoutY="11.0" text="MARKETPLACE" AnchorPane.topAnchor="11.0">
+            <Label alignment="CENTER" layoutY="11.0" prefHeight="28.0" prefWidth="600.0" text="MARKETPLACE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="11.0">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
+            <Button fx:id="botaoPerfil" layoutX="542.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleAcessoPerfil" text="Perfil" AnchorPane.rightAnchor="14.799999999999997" />
+            <Button fx:id="buttonDev" layoutX="495.0" layoutY="12.0" mnemonicParsing="false" text="Dev" AnchorPane.rightAnchor="68.2" />
             <Button fx:id="botaoVoltarAoMenu" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleVoltarAoMenu" text="Voltar ao menu" AnchorPane.leftAnchor="14.0" />
          </children>
       </AnchorPane>
    </top>
    <center>
-      <ListView fx:id="listVendiveis" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <ListView fx:id="listOfertaIngressos" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
       <AnchorPane prefHeight="42.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="BotaoComprarIngressos" layoutX="430.0" layoutY="8.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="85.0" text="COMPRAR" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="14.0" />
+            <Label fx:id="labelErro" alignment="CENTER" layoutY="13.0" prefHeight="18.0" prefWidth="600.0" textFill="RED" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Button fx:id="BotaoComprarIngressos" layoutX="430.0" layoutY="8.0" mnemonicParsing="false" onAction="#handleComprarIngresso" prefHeight="26.0" prefWidth="85.0" text="COMPRAR" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="14.0" />
             <Label fx:id="labelSaldo" layoutX="14.0" layoutY="10.0" text="Saldo: R$XX,XX">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button fx:id="buttonVender" layoutX="425.0" layoutY="8.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="65.0" text="VENDER" />
+            <Button fx:id="buttonVender" layoutX="425.0" layoutY="8.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="65.0" text="VENDER" AnchorPane.rightAnchor="109.4" />
          </children>
       </AnchorPane>
    </bottom>
