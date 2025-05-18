@@ -24,6 +24,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <Button fx:id="botaoVoltarAoMenu" layoutX="15.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleVoltarAoMenu" text="Voltar ao menu" AnchorPane.leftAnchor="15.0" />
          </children>
       </AnchorPane>
    </top>
@@ -34,6 +35,7 @@
       <AnchorPane prefHeight="39.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="buttonVenderIngresso" layoutX="466.0" layoutY="7.0" mnemonicParsing="false" text="VENDER INGRESSO" AnchorPane.rightAnchor="14.799999999999997" />
+            <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" text="LogOut" AnchorPane.leftAnchor="14.0" />
          </children>
       </AnchorPane>
    </bottom>

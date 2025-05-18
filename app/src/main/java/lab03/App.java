@@ -18,18 +18,13 @@ import javafx.stage.Stage;
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Carrega o arquivo FXML
         Parent root = FXMLLoader.load(getClass().getResource("/MenuWindow.fxml"));
-
-        // Cria a cena com o nó raiz
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
 
-        // Configura o Stage
         primaryStage.setTitle("Super eventos");
         primaryStage.setScene(scene);
 
-        // Exibe o Stage
         primaryStage.show();
     }
 

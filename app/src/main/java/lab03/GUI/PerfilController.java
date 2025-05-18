@@ -11,7 +11,7 @@ import javafx.scene.control.ListView;
 import lab03.Gerenciadora;
 import lab03.Ingresso;
 
-public class PerfilController {
+public class PerfilController extends NavegacaoController {
 
     @FXML
     private Label labelUsuario;
@@ -44,8 +44,8 @@ public class PerfilController {
         labelSaldo.setText("Saldo: R$" + decimalFormat.format(saldoUsuario));
 
         List<Ingresso> ingressosUsuario = gerenciadora.getUsuarioAtual().getIngressos();
-        ObservableList<Ingresso> observableEventos = FXCollections.observableArrayList(ingressosUsuario);
-        listIngressos.setItems(observableEventos);
+        ObservableList<Ingresso> observableIngressos = FXCollections.observableArrayList(ingressosUsuario);
+        listIngressos.setItems(observableIngressos);
     }
     
 }

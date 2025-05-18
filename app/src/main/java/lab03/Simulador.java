@@ -42,7 +42,7 @@ public class Simulador {
         EventoShow showMichael = superEventos.criarEvento("Biridin",
         400, LocalDate.of(2025,12, 15), "Michael Jackson", gerenciadora.getHistorico());
         List<String> times = new ArrayList<String>(Arrays.asList("time1", "time2"));
-        EventoJogo jogoEsporte = superEventos.criarEvento("Evento 2",
+        EventoJogo jogoEsporte = superEventos.criarEvento("Evento esportivo",
         1100, LocalDate.of(2026, 6, 30), times, gerenciadora.getHistorico());
         
         /*  Para exemplo, como só existe uma imobiliaria cadastrada, na simulação
@@ -63,11 +63,12 @@ public class Simulador {
         Ingresso ingressoMichael = new Ingresso(showMichael, showMichael.getPrecoIngresso());
         Ingresso ingressoMichael2 = new Ingresso(showMichael, showMichael.getPrecoIngresso());
         Ingresso ingressoEsporte = new Ingresso(jogoEsporte, jogoEsporte.getPrecoIngresso());
+        Ingresso ingressoEsporte2 = new Ingresso(jogoEsporte, jogoEsporte.getPrecoIngresso());
 
         gerenciadora.getIngressosComunsDisponiveis().addAll(Arrays.asList(
             ingressoShowAzul, ingressoShowAzul2,
             ingressoMichael, ingressoMichael2,
-            ingressoEsporte));
+            ingressoEsporte, ingressoEsporte2));
 
     }
 

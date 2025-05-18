@@ -12,10 +12,7 @@ import javafx.scene.control.ListView;
 import lab03.Gerenciadora;
 import lab03.OfertaIngresso;
 
-public class MarketplaceController {
-
-    @FXML
-    private Label labelUsuario;
+public class MarketplaceController extends NavegacaoController {
 
     @FXML
     private Label labelSaldo;
@@ -30,8 +27,6 @@ public class MarketplaceController {
     public void initialize() {
         Gerenciadora gerenciadora = Gerenciadora.getInstance();
 
-        String nomeUsuario = gerenciadora.getUsuarioAtual().getNome();
-        labelUsuario.setText(nomeUsuario);
         Double saldoUsuario = gerenciadora.getUsuarioAtual().getSaldo();
         DecimalFormat decimalFormat = new DecimalFormat("#.00"); 
         labelSaldo.setText("Saldo: R$" + decimalFormat.format(saldoUsuario));
