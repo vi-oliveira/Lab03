@@ -15,6 +15,7 @@ import lab03.Exceptions.OfertaNaoEncontradaException;
 import lab03.Exceptions.SaldoInsuficienteException;
 
 public class Gerenciadora {
+    private static Gerenciadora INSTANCE;
     private HistoricoEventos historico;
     private Marketplace marketplace;
     private Cliente usuarioAtual;
@@ -22,7 +23,7 @@ public class Gerenciadora {
     private List<Organizadora> organizadoras;
     private HashMap<String, Cliente> clientes;
 
-    public Gerenciadora(){
+    private Gerenciadora(){
         this.historico = new HistoricoEventos();
         this.marketplace = new Marketplace(20);
         this.usuarioAtual = null; // Na simulação de clientes, alterar para que seja feito por login
@@ -31,6 +32,13 @@ public class Gerenciadora {
         this.clientes = new HashMap<String, Cliente>();
     }
     
+    public static Gerenciadora getInstance(){
+        if (INSTANCE == null){
+            INSTANCE = new Gerenciadora();
+        }
+        return INSTANCE;
+    }
+
     public void venderIngresso(Cliente cliente, Vendivel ingressoAVenda, Marketplace marketplace)
     throws IngressoEsgotadoException, EventoNaoEncontradoException, SaldoInsuficienteException, OfertaNaoEncontradaException {
         cliente.comprarIngressoNoMarketPlace(ingressoAVenda, marketplace);
@@ -56,6 +64,10 @@ public class Gerenciadora {
 
     public Marketplace getMarketplace(){
         return marketplace;
+    }
+
+    public Cliente getUsuarioAtual(){
+        return usuarioAtual;
     }
 
     public List<ImobiliariaDeEventos> getImobiliarias(){

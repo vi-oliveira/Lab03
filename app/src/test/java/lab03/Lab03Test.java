@@ -13,7 +13,7 @@ public class Lab03Test {
      */
     @Test
     public void verificarCompraComum(){
-        Gerenciadora gerenciadora = new Gerenciadora();
+        Gerenciadora gerenciadora = Gerenciadora.getInstance();
         gerenciadora.simularExemplo();
         Marketplace marketplace = gerenciadora.getMarketplace();
 

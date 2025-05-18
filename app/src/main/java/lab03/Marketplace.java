@@ -32,7 +32,6 @@ public class Marketplace {
 
     private void processarCompraComum(Cliente comprador, Ingresso ingresso)
     throws IngressoEsgotadoException, EventoNaoEncontradoException, SaldoInsuficienteException {
-        System.out.println("ingresso");
         Evento evento = ingresso.getEvento();
         evento.venderIngresso(comprador, ingresso);
 

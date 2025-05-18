@@ -6,6 +6,8 @@
 
 package lab03;
 
+import java.text.DecimalFormat;
+
 import lab03.Eventos.Evento;
 
 /**
@@ -48,5 +50,11 @@ public class Ingresso implements Vendivel {
      */
     public void setEvento(Evento evento) {
         this.evento = evento;
+    }
+
+    @Override
+    public String toString(){
+        DecimalFormat decimalFormat = new DecimalFormat("#.00"); 
+        return "Ingresso comum para: " + this.evento.getNome() + "  -  R$" + decimalFormat.format(this.preco);
     }
 }

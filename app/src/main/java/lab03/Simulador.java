@@ -15,7 +15,7 @@ import lab03.Eventos.Organizadora;
 public class Simulador {
     public Simulador(){}
 
-    private void SimularImobiliariaELocais(Gerenciadora gerenciadora){
+    private void SimularImobiliariaELocais(Gerenciadora gerenciadora) {
         ImobiliariaDeEventos imobiliaria = new ImobiliariaDeEventos("Super Eventos");
 
         Local teatroArena = new Local("Teatro de Arena", 100);
@@ -31,7 +31,7 @@ public class Simulador {
         gerenciadora.getImobiliarias().add(imobiliaria);
     }
 
-    private void SimularEventos(Gerenciadora gerenciadora){
+    private void SimularEventos(Gerenciadora gerenciadora) {
         Organizadora superEventos = new Organizadora("Super Eventos",
         12345678, "Rua Adalberto Einstein nº321");
 
@@ -71,7 +71,7 @@ public class Simulador {
 
     }
 
-    private void SimularClientes(Gerenciadora gerenciadora){
+    private void SimularClientes(Gerenciadora gerenciadora) {
         Cliente alonso = new Cliente("Alonso", "Alonso@gmail.com", "senha", "1234-4321", 250.0);
         Cliente ana = new Cliente("Ana", "anana@unicamp.com", "qsdsijf", "9876-6789", 343000000000.0);
         Cliente gabriela = new Cliente("Gabriela", "EEEMAIL@gmail.com", "294748292", "9999-1111", 750.0);
@@ -86,22 +86,26 @@ public class Simulador {
 
         // Como o exemplo é planejado à mão, os erros não vão ocorrer, então não é necessário colocar nada no catch
         try {
-            Evento showAzul = gerenciadora.getHistorico().getEventos().get(0);
             Marketplace marketplace = gerenciadora.getMarketplace();
             Ingresso ingressoAzul = (Ingresso) marketplace.listarOfertas().get(0);
             gerenciadora.venderIngresso(alonso, ingressoAzul, marketplace);
     
-            Evento showMichael = gerenciadora.getHistorico().getEventos().get(1);
             Ingresso ingressoMichael = (Ingresso) marketplace.listarOfertas().get(2);
             gerenciadora.venderIngresso(ana, ingressoMichael, marketplace);
         } catch (Exception e) {}
     }
 
-    // Simular marketplace
+    private void SimularMarketplace(Gerenciadora gerenciadora) {
+        Cliente vendedor = gerenciadora.getCLientes().get("anana@unicamp.com");
+        try{
+            vendedor.oferecerIngressoParaVenda(vendedor.getIngressos().get(0), 500.0, gerenciadora.getMarketplace());
+        } catch (Exception e) {}
+    }
     
-    public void Simular(Gerenciadora gerenciadora){
+    public void Simular(Gerenciadora gerenciadora) {
         SimularImobiliariaELocais(gerenciadora);
         SimularEventos(gerenciadora);
         SimularClientes(gerenciadora);
+        SimularMarketplace(gerenciadora);
     }
 }

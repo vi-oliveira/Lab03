@@ -1,5 +1,7 @@
 package lab03;
 
+import java.text.DecimalFormat;
+
 import lab03.Clientes.Cliente;
 
 public class OfertaIngresso implements Vendivel {
@@ -23,5 +25,11 @@ public class OfertaIngresso implements Vendivel {
     
     public Cliente getVendedor(){
         return vendedor;
+    }
+
+    @Override
+    public String toString(){
+        DecimalFormat decimalFormat = new DecimalFormat("#.00"); 
+        return "Ingresso de " + this.vendedor.getNome() + " para: " + this.ingresso.getEvento().getNome() + "  -  R$" + decimalFormat.format(this.precoPedido);
     }
 }

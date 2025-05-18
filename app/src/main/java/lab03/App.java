@@ -17,17 +17,17 @@ import lab03.Clientes.Cliente;
  * @author Vinícius de Oliveira - 251527
  */
 public class App extends Application {
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Carrega o arquivo FXML
         Parent root = FXMLLoader.load(getClass().getResource("/MainWindow.fxml"));
 
         // Cria a cena com o nó raiz
-        Scene scene = new Scene(root, 300, 200);
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
 
         // Configura o Stage
-        primaryStage.setTitle("Minha Primeira Aplicação JavaFX");
+        primaryStage.setTitle("Comprar ingressos");
         primaryStage.setScene(scene);
 
         // Exibe o Stage
@@ -45,11 +45,11 @@ public class App extends Application {
      * @param args argumentos para execução
      */
     public static void main(String[] args) {
-         launch(args); // Inicia a aplicação JavaFX
-        // Testar forma de singleton
-        /*Gerenciadora gerenciadora = new Gerenciadora();
+        Gerenciadora gerenciadora = Gerenciadora.getInstance();
         gerenciadora.simularExemplo();
+        launch(args);
 
+        /*
         Cliente vendedor = gerenciadora.getCLientes().get("Alonso@gmail.com");
         Ingresso ingressoASerVendido = vendedor.getIngressos().get(0);
 

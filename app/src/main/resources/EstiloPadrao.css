@@ -1,0 +1,11 @@
+.button:hover {
+    -fx-cursor: hand;
+}
+
+#buttonDev {
+    -fx-background-color: rgb(240, 153, 153);
+}
+
+#buttonDev:hover {
+    -fx-background-color: rgb(241, 92, 92);
+}
