@@ -13,7 +13,7 @@ import lab03.Eventos.Evento;
 /**
  * Contém a estrutura de implementação de um Ingresso.
  */
-public class Ingresso implements Vendivel {
+public class Ingresso {
 
     private Evento evento;
     private Double preco;
@@ -55,6 +55,6 @@ public class Ingresso implements Vendivel {
     @Override
     public String toString(){
         DecimalFormat decimalFormat = new DecimalFormat("#.00"); 
-        return "Ingresso comum para: " + this.evento.getNome() + "  -  R$" + decimalFormat.format(this.preco);
+        return "Ingresso para: " + this.evento.getNome() + "  -  R$" + decimalFormat.format(this.preco);
     }
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab03.GUI.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab03.GUI.MarketplaceController">
    <top>
       <AnchorPane prefHeight="48.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -32,7 +32,7 @@
    <bottom>
       <AnchorPane prefHeight="42.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="BotaoComprarIngressos" layoutX="430.0" layoutY="8.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="26.0" prefWidth="85.0" text="COMPRAR" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="14.0" />
+            <Button fx:id="BotaoComprarIngressos" layoutX="430.0" layoutY="8.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="85.0" text="COMPRAR" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="14.0" />
             <Label fx:id="labelSaldo" layoutX="14.0" layoutY="10.0" text="Saldo: R$XX,XX">
                <font>
                   <Font size="15.0" />

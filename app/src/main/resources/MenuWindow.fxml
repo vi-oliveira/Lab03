@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-padding: 15;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab03.GUI.MenuController">
+   <children>
+      <Label fx:id="labelUsuario" alignment="CENTER" contentDisplay="CENTER" text="BEM-VINDO, USUARIO!">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="50.0" />
+         </VBox.margin>
+      </Label>
+      <Button fx:id="botaoEventos" mnemonicParsing="false" onAction="#handleAcessoEventos" prefHeight="49.0" prefWidth="158.0" text="Eventos">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="30.0" />
+         </VBox.margin>
+      </Button>
+      <Button fx:id="botaoMarketplace" mnemonicParsing="false" onAction="#handleAcessoMarketPlace" prefHeight="49.0" prefWidth="158.0" text="Marketplace">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="30.0" />
+         </VBox.margin>
+      </Button>
+      <Button fx:id="botaoPerfil" mnemonicParsing="false" onAction="#handleAcessoPerfil" prefHeight="49.0" prefWidth="158.0" text="Perfil">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="30.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>

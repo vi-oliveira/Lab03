@@ -158,9 +158,9 @@ public abstract class Evento {
      * @throws EventoNaoEncontradoException se o ingresso fornecido não pertence a este evento
      */
     public void venderIngresso(Cliente cliente, Ingresso ingresso)
-    throws IngressoEsgotadoException, EventoNaoEncontradoException {
-        /*if(cliente.getSaldo() < ingresso.getPreco()) throw new
-        SaldoInsuficienteException("Saldo insuficiente");*/
+    throws IngressoEsgotadoException, EventoNaoEncontradoException, SaldoInsuficienteException {
+        if(cliente.getSaldo() < ingresso.getPreco()) throw new
+        SaldoInsuficienteException("Saldo insuficiente");
 
         if (this.caracteristicas.getIngressosVendidos().size() + 1 >
         this.caracteristicas.getLocal().getCapacidade()){
@@ -172,7 +172,7 @@ public abstract class Evento {
                 + ingresso.getEvento().getNome() + " != " + this.getNome());
         }
         this.caracteristicas.getIngressosVendidos().add(ingresso);
-        // cliente.setSaldo(cliente.getSaldo() - ingresso.getPreco());
+        cliente.setSaldo(cliente.getSaldo() - ingresso.getPreco());
         cliente.adicionarIngresso(ingresso);
     }
 
@@ -185,11 +185,11 @@ public abstract class Evento {
      * @throws EventoNaoEncontradoException se algum ingresso da lista não pertence a este evento
      */
     public void venderIngresso(Cliente cliente, List<Ingresso> ingressos)
-    throws IngressoEsgotadoException, EventoNaoEncontradoException {
+    throws IngressoEsgotadoException, EventoNaoEncontradoException, SaldoInsuficienteException {
         Double precoTotal = 0.0;
         for (Ingresso ingresso : ingressos) precoTotal += ingresso.getPreco();
-        /*if(cliente.getSaldo() < precoTotal) throw new
-        SaldoInsuficienteException("Saldo insuficiente, nenhum ingresso comprado");*/
+        if(cliente.getSaldo() < precoTotal) throw new
+        SaldoInsuficienteException("Saldo insuficiente, nenhum ingresso comprado");
 
         if (this.caracteristicas.getIngressosVendidos().size() + ingressos.size() >
         this.caracteristicas.getLocal().getCapacidade()){
@@ -203,8 +203,13 @@ public abstract class Evento {
             }
         }
         this.caracteristicas.getIngressosVendidos().addAll(ingressos);
-        // cliente.setSaldo(cliente.getSaldo() - precoTotal);
+        cliente.setSaldo(cliente.getSaldo() - precoTotal);
         cliente.adicionarIngresso(ingressos);
 
+    }
+
+    @Override
+    public String toString(){
+        return this.caracteristicas.getNome();
     }
 }

@@ -9,7 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import lab03.Clientes.Cliente;
 
 /**
  * Contém a estrutura de implementação da aplicação.
@@ -20,14 +19,14 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Carrega o arquivo FXML
-        Parent root = FXMLLoader.load(getClass().getResource("/MainWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/MenuWindow.fxml"));
 
         // Cria a cena com o nó raiz
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
 
         // Configura o Stage
-        primaryStage.setTitle("Comprar ingressos");
+        primaryStage.setTitle("Super eventos");
         primaryStage.setScene(scene);
 
         // Exibe o Stage

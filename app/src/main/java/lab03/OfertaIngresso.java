@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 
 import lab03.Clientes.Cliente;
 
-public class OfertaIngresso implements Vendivel {
+public class OfertaIngresso {
     private Ingresso ingresso;
     private Double precoPedido;
     private Cliente vendedor;
@@ -19,7 +19,7 @@ public class OfertaIngresso implements Vendivel {
         return ingresso;
     }
 
-    public Double getPreco(){
+    public Double getPrecoPedido(){
         return precoPedido;
     }
     

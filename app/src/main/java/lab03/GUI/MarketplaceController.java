@@ -10,9 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import lab03.Gerenciadora;
-import lab03.Vendivel;
+import lab03.OfertaIngresso;
 
-public class MainController {
+public class MarketplaceController {
 
     @FXML
     private Label labelUsuario;
@@ -24,7 +24,7 @@ public class MainController {
     private Button BotaoComprarIngressos;
 
     @FXML
-    private ListView<Vendivel> listVendiveis;
+    private ListView<OfertaIngresso> listVendiveis;
 
     @FXML
     public void initialize() {
@@ -36,14 +36,9 @@ public class MainController {
         DecimalFormat decimalFormat = new DecimalFormat("#.00"); 
         labelSaldo.setText("Saldo: R$" + decimalFormat.format(saldoUsuario));
 
-        List<Vendivel> ingressos = gerenciadora.getMarketplace().listarOfertas();
-        ObservableList<Vendivel> observableIngressos = FXCollections.observableArrayList(ingressos);
+        List<OfertaIngresso> ingressos = gerenciadora.getMarketplace().listarOfertas();
+        ObservableList<OfertaIngresso> observableIngressos = FXCollections.observableArrayList(ingressos);
         listVendiveis.setItems(observableIngressos);
-    }
-
-    @FXML
-    private void handleExit() {
-        System.exit(0);
     }
     
 }
