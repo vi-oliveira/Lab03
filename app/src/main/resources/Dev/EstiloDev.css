@@ -1,0 +1,12 @@
+.button{
+    -fx-background-color: rgb(240, 153, 153);
+}
+
+.button:hover {
+    -fx-cursor: hand;
+    -fx-background-color: rgb(242, 121, 121);
+}
+
+AnchorPane, HBox {
+    -fx-background-color: rgb(255, 219, 219);
+}

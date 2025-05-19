@@ -35,7 +35,7 @@
                   <Label fx:id="labelOrganizadora" text="Organizadora: nomeorganizadora" />
                </children>
             </HBox>
-            <Button fx:id="buttonDev" layoutX="498.0" layoutY="10.0" mnemonicParsing="false" text="Dev" AnchorPane.rightAnchor="65.20000000000005" />
+            <Button fx:id="buttonDev" layoutX="498.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleAcessoDev" text="Dev" AnchorPane.rightAnchor="65.20000000000005" />
             <Button fx:id="botaoPerfil" layoutX="542.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleAcessoPerfil" text="Perfil" AnchorPane.rightAnchor="14.799999999999997" />
          </children>
       </AnchorPane>

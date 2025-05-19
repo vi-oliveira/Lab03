@@ -8,9 +8,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 import lab03.Gerenciadora;
 import lab03.OfertaIngresso;
 
@@ -24,6 +28,9 @@ public class MarketplaceController extends NavegacaoController {
 
     @FXML
     private Button BotaoComprarIngressos;
+
+    @FXML
+    private Button buttonVender;
 
     @FXML
     private ListView<OfertaIngresso> listOfertaIngressos;
@@ -54,5 +61,19 @@ public class MarketplaceController extends NavegacaoController {
             }
         }
         initialize();
+    }
+
+    private Stage getStage(ActionEvent event) {
+        return (Stage) ((javafx.scene.Node)event.getSource()).getScene().getWindow();
+    }
+    
+    @FXML
+    void handleAcessarVendaIngresso(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/OferecerIngressoWindow.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = getStage(event);
+        scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
+        stage.setScene(scene);
+        stage.setTitle("Vender ingresso");
     }
 }

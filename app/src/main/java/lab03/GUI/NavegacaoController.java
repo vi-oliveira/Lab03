@@ -56,4 +56,17 @@ public class NavegacaoController {
         stage.setScene(scene);
         stage.setTitle("Perfil");
     }
+
+    @FXML
+    void handleAcessoDev(ActionEvent event) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dev/DevWindow.fxml"));
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        scene.getStylesheets().add(getClass().getResource("/Dev/EstiloDev.css").toExternalForm());
+        stage.setScene(scene);
+        stage.setTitle("Menu de desenvolvimento");
+        stage.show();
+    }
 }

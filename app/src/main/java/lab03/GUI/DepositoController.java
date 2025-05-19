@@ -32,11 +32,14 @@ public class DepositoController {
 
         try{
             Double valorDeposito = Double.parseDouble(valorDigitado);
+            if (valorDeposito < 0) throw new IllegalArgumentException();
             gerenciadora.getUsuarioAtual().setSaldo(usuario.getSaldo() + valorDeposito);
             perfilController.initialize(); //Atualiza o valor do saldo na tela de perfil
             labelAviso.setText("Valor de " + valorDeposito + " adicionado");
         } catch (NumberFormatException e) {
             labelAviso.setText("Input inválido");
+        } catch (IllegalArgumentException e){
+            labelAviso.setText("O valor deve ser positivo");
         }
     }
 }

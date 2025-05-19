@@ -7,10 +7,10 @@ import lab03.Clientes.Cliente;
 
 public class Marketplace {
     private List<OfertaIngresso> ingressosAVenda;
-    private int comissaoPorcentagem;
+    private Double comissaoPorcentagem;
     private Double saldoComissao;
 
-    public Marketplace(int comissaoPorcentagem){
+    public Marketplace(Double comissaoPorcentagem){
         this.ingressosAVenda = new ArrayList<OfertaIngresso>();
         this.comissaoPorcentagem = comissaoPorcentagem/100;
         this.saldoComissao = 0.0;

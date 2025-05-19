@@ -25,7 +25,7 @@ public class Gerenciadora {
 
     private Gerenciadora(){
         this.historico = new HistoricoEventos();
-        this.marketplace = new Marketplace(20);
+        this.marketplace = new Marketplace(20.0);
         this.usuarioAtual = null; // Na simulação de clientes, alterar para que seja feito por login
         this.ingressosComunsDisponiveis = new ArrayList<Ingresso>();
         this.imobiliarias = new ArrayList<ImobiliariaDeEventos>();
