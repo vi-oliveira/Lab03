@@ -89,7 +89,7 @@ public class Cliente implements CompararA {
     public void comprarIngressoNoMarketplace(OfertaIngresso oferta, Marketplace marketplace)
     throws SaldoInsuficienteException, OfertaNaoEncontradaException {
         if(this.saldo < oferta.getPrecoPedido()) throw new SaldoInsuficienteException("Saldo insuficiente");
-        if (!marketplace.listarOfertas().contains(oferta)) throw new OfertaNaoEncontradaException("Essa oferta não existe");
+        if (!marketplace.listarOfertas().contains(oferta)) throw new OfertaNaoEncontradaException("Essa oferta não foi encontrada");
         marketplace.processarCompra(this, oferta);
     }
 

@@ -70,6 +70,19 @@ public class Gerenciadora {
     }
 
     /**
+     * **Método de reset para fins de teste.**
+     * 
+     * Este método estático reinicializa a única instância da classe {@code Gerenciadora},
+     * criando uma nova instância. É usado exclusivamente em ambientes de teste
+     * para garantir que cada teste comece com um estado limpo do sistema,
+     * evitando dependências de testes anteriores devido ao padrão Singleton.
+     *
+     */
+    public static void reset() {
+        INSTANCE = new Gerenciadora();
+    }
+
+    /**
      * Processa a venda de um único ingresso comum para um cliente.
      * Remove o ingresso da lista de ingressos comuns disponíveis.
      *

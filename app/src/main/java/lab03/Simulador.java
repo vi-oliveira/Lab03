@@ -140,7 +140,7 @@ public class Simulador {
     private void SimularMarketplace(Gerenciadora gerenciadora) {
         Cliente vendedor = gerenciadora.getCLientes().get("Alonso@gmail.com");
         try{
-            vendedor.oferecerIngressoParaVenda(vendedor.getIngressos().get(0), 500.0, gerenciadora.getMarketplace());
+            vendedor.oferecerIngressoParaVenda(vendedor.getIngressos().get(0), 100.0, gerenciadora.getMarketplace());
         } catch (Exception e) {}
     }
     
