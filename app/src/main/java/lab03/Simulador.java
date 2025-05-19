@@ -83,7 +83,7 @@ public class Simulador {
         gerenciadora.getCLientes().put(gabriela.getEmail(), gabriela);
         gerenciadora.getCLientes().put(cliente.getEmail(), cliente);
 
-        gerenciadora.setUsuario(cliente);
+        gerenciadora.setUsuarioAtual(null);
 
         // Como o exemplo é planejado à mão, os erros não vão ocorrer, então não é necessário colocar nada no catch
         try {

@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import lab03.Gerenciadora;
 
-public class MenuController extends NavegacaoController {
+public class MenuController extends GeralController {
 
     @FXML
     private Label labelUsuario;
@@ -24,6 +24,6 @@ public class MenuController extends NavegacaoController {
         Gerenciadora gerenciadora = Gerenciadora.getInstance();
 
         String nomeUsuario = gerenciadora.getUsuarioAtual().getNome();
-        labelUsuario.setText("BEM-VINDO, " + nomeUsuario.toUpperCase() + "!");
+        labelUsuario.setText("BOAS-VINDAS, " + nomeUsuario.toUpperCase() + "!");
     }
 }

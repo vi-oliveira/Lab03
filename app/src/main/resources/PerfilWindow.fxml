@@ -49,7 +49,7 @@
       <AnchorPane prefHeight="39.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="botaoFazerDeposito" layoutX="498.0" layoutY="7.0" mnemonicParsing="false" onAction="#handleJanelaDepositar" text="Fazer depósito" AnchorPane.rightAnchor="7.600000000000023" />
-            <Button layoutX="6.0" layoutY="7.0" mnemonicParsing="false" text="LogOut" AnchorPane.leftAnchor="6.0" />
+            <Button fx:id="botaoLogout" layoutX="6.0" layoutY="7.0" mnemonicParsing="false" onAction="#handleLogout" text="LogOut" AnchorPane.leftAnchor="6.0" />
          </children>
       </AnchorPane>
    </bottom>

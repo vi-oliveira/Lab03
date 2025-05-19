@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import lab03.Gerenciadora;
 import lab03.OfertaIngresso;
 
-public class MarketplaceController extends NavegacaoController {
+public class MarketplaceController extends GeralController {
 
     @FXML
     private Label labelSaldo;
@@ -68,7 +68,7 @@ public class MarketplaceController extends NavegacaoController {
     }
     
     @FXML
-    void handleAcessarVendaIngresso(ActionEvent event) throws Exception {
+    void handleAcessarVendaIngresso(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/OferecerIngressoWindow.fxml"));
         Scene scene = new Scene(root);
         Stage stage = getStage(event);

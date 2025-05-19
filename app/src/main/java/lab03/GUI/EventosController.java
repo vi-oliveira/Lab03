@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import lab03.Gerenciadora;
 import lab03.Eventos.Evento;
 
-public class EventosController extends NavegacaoController {
+public class EventosController extends GeralController {
 
     @FXML
     private Button BotaoSelecionar;

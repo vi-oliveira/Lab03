@@ -58,7 +58,7 @@ public class Gerenciadora {
         simulador.Simular(this);
     }
 
-    public void setUsuario(Cliente usuario) {
+    public void setUsuarioAtual(Cliente usuario) {
         this.usuarioAtual = usuario;
     }
 

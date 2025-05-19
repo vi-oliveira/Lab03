@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import lab03.Gerenciadora;
 import lab03.Ingresso;
 
-public class PerfilController extends NavegacaoController {
+public class PerfilController extends GeralController {
 
     @FXML
     private Label labelUsuario;
@@ -58,7 +58,7 @@ public class PerfilController extends NavegacaoController {
     }
     
     @FXML
-    public void handleJanelaDepositar(ActionEvent event) throws IOException {
+    private void handleJanelaDepositar(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/DepositoWindow.fxml"));
         Parent root = loader.load();
         DepositoController depositoController = loader.getController();
@@ -70,5 +70,12 @@ public class PerfilController extends NavegacaoController {
         stage.setTitle("Depositar");
         stage.show();
         depositoController.setPerfilController(this);
+    }
+
+    @FXML
+    private void handleLogout(ActionEvent event) throws IOException {
+        Gerenciadora gerenciadora = Gerenciadora.getInstance();
+        gerenciadora.setUsuarioAtual(null);
+        handleAcessoLogin(event);
     }
 }

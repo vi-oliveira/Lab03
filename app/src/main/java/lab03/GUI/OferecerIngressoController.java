@@ -20,7 +20,7 @@ import lab03.Ingresso;
 import lab03.Clientes.Cliente;
 import lab03.Exceptions.IngressoNaoPertenceAoClienteException;
 
-public class OferecerIngressoController extends NavegacaoController {
+public class OferecerIngressoController extends GeralController {
 
     @FXML
     private Label labelErro;

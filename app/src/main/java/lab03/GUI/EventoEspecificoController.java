@@ -16,7 +16,7 @@ import lab03.Gerenciadora;
 import lab03.Ingresso;
 import lab03.Eventos.Evento;
 
-public class EventoEspecificoController extends NavegacaoController {
+public class EventoEspecificoController extends GeralController {
     private Evento eventoAtual = null;
 
     public Evento getEventoAtual(){

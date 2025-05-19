@@ -1,5 +1,7 @@
 package lab03.GUI;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class NavegacaoController {
+public class GeralController {
 
     @FXML
     private Button botaoVoltarAoMenu;    
@@ -18,7 +20,7 @@ public class NavegacaoController {
     }
     
     @FXML
-    void handleVoltarAoMenu(ActionEvent event) throws Exception {
+    protected void handleVoltarAoMenu(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/MenuWindow.fxml"));
         Scene scene = new Scene(root);
         Stage stage = getStage(event);
@@ -28,7 +30,7 @@ public class NavegacaoController {
     }
 
     @FXML
-    void handleAcessoEventos(ActionEvent event) throws Exception {
+    protected void handleAcessoEventos(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/EventosWindow.fxml"));
         Scene scene = new Scene(root);
         Stage stage = getStage(event);
@@ -38,7 +40,7 @@ public class NavegacaoController {
     }
 
     @FXML
-    void handleAcessoMarketPlace(ActionEvent event) throws Exception {
+    protected void handleAcessoMarketPlace(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/MarketplaceWindow.fxml"));
         Scene scene = new Scene(root);
         Stage stage = getStage(event);
@@ -48,7 +50,7 @@ public class NavegacaoController {
     }
 
     @FXML
-    void handleAcessoPerfil(ActionEvent event) throws Exception {
+    protected void handleAcessoPerfil(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/PerfilWindow.fxml"));
         Scene scene = new Scene(root);
         Stage stage = getStage(event);
@@ -58,7 +60,27 @@ public class NavegacaoController {
     }
 
     @FXML
-    void handleAcessoDev(ActionEvent event) throws Exception {
+    protected void handleAcessoLogin(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/LoginWindow.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = getStage(event);
+        scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
+        stage.setScene(scene);
+        stage.setTitle("Eventos");
+    }
+    
+    @FXML
+    protected void handleAcessoNovoCliente(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/NovoClienteWindow.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = getStage(event);
+        scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
+        stage.setScene(scene);
+        stage.setTitle("Eventos");
+    }
+
+    @FXML
+    protected void handleAcessoDev(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dev/DevWindow.fxml"));
         Parent root = loader.load();
 

@@ -18,11 +18,11 @@ import javafx.stage.Stage;
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/MenuWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/LoginWindow.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
 
-        primaryStage.setTitle("Super eventos");
+        primaryStage.setTitle("Login");
         primaryStage.setScene(scene);
 
         primaryStage.show();
@@ -42,18 +42,5 @@ public class App extends Application {
         Gerenciadora gerenciadora = Gerenciadora.getInstance();
         gerenciadora.simularExemplo();
         launch(args);
-
-        /*
-        Cliente vendedor = gerenciadora.getCLientes().get("Alonso@gmail.com");
-        Ingresso ingressoASerVendido = vendedor.getIngressos().get(0);
-
-        System.out.println("Ingressos Antes: " + vendedor.getIngressos());
-        
-        try {
-            vendedor.oferecerIngressoParaVenda(ingressoASerVendido, ingressoASerVendido.getPreco() - 20.0 , gerenciadora.getMarketplace());
-        } catch (Exception e){}
-        
-        System.out.println("Ingressos Depois: " + vendedor.getIngressos());*/
-
     }
 }
