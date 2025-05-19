@@ -156,6 +156,7 @@ public abstract class Evento {
      * @param ingresso o ingresso a ser vendido
      * @throws IngressoEsgotadoException se a capacidade máxima do local já foi atingida
      * @throws EventoNaoEncontradoException se o ingresso fornecido não pertence a este evento
+     * @throws SaldoInsuficienteException Se o cliente não possuir saldo suficiente para a compra
      */
     public void venderIngresso(Cliente cliente, Ingresso ingresso)
     throws IngressoEsgotadoException, EventoNaoEncontradoException, SaldoInsuficienteException {
@@ -183,6 +184,7 @@ public abstract class Evento {
      * @param ingressos a lista de ingressos a serem vendidos
      * @throws IngressoEsgotadoException se a venda dos ingressos ultrapassar a capacidade do local
      * @throws EventoNaoEncontradoException se algum ingresso da lista não pertence a este evento
+     * @throws SaldoInsuficienteException Se o cliente não possuir saldo suficiente para a compra
      */
     public void venderIngresso(Cliente cliente, List<Ingresso> ingressos)
     throws IngressoEsgotadoException, EventoNaoEncontradoException, SaldoInsuficienteException {

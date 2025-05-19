@@ -1,3 +1,11 @@
+/*
+ * GeralController.java
+ * 
+ * Material usado na disciplina MC322 - Programação orientada a objetos.
+ * 
+ * A documentação para javadoc deste arquivo foi feitacom o uso de IA
+ * e posteriormente revisada e/ou corrigida.
+ */
 package lab03.GUI;
 
 import java.io.IOException;
@@ -20,6 +28,11 @@ import javafx.stage.Stage;
  */
 public class GeralController {
 
+    /**
+     * Construtor padrão da classe. (Para remover aviso do javadoc)
+     */
+    public GeralController(){}
+
     @FXML
     private Button botaoVoltarAoMenu;    
 
@@ -30,7 +43,7 @@ public class GeralController {
      * @param event O ActionEvent disparado por um elemento da UI.
      * @return O Stage associado ao evento.
      */
-    private Stage getStage(ActionEvent event) {
+    protected Stage getStage(ActionEvent event) {
         return (Stage) ((javafx.scene.Node)event.getSource()).getScene().getWindow();
     }
     

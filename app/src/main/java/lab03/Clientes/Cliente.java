@@ -28,8 +28,8 @@ import lab03.Notificacoes.Notificavel;
 /**
  * Representa um cliente que pode comprar ingressos para eventos e receber notificações.
  * 
- * Um cliente possui nome, e-mail, telefone, uma lista de ingressos adquiridos e
- * listas de notificações pendentes e enviadas.
+ * Um cliente possui nome, e-mail, senha, telefone, saldo, uma lista de
+ * ingressos adquiridos e listas de notificações pendentes e enviadas.
  * 
  * @author Vinícius de Oliveira - 251527
  */
@@ -47,7 +47,9 @@ public class Cliente implements CompararA {
      * Construtor da classe cliente
      * @param nome o nome do cliente
      * @param email o email do cliente
+     * @param senha a senha do cliente
      * @param telefone o telefone do cliente
+     * @param saldo o saldo do cliente
      */
     public Cliente(String nome, String email, String senha, String telefone, Double saldo){
         this.nome = nome;

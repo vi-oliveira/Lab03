@@ -3,7 +3,7 @@
  * 
  * Material usado na disciplina MC322 - Programação orientada a objetos.
  * 
- * A documentação para javadoc deste arquivo foi com o uso de Ia
+ * A documentação para javadoc deste arquivo foi feita com o uso de IA
  * e posteriormente revisada e/ou corrigida.
  */
 package lab03;

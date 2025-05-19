@@ -1,3 +1,11 @@
+/*
+ * MarkeplaceController.java
+ * 
+ * Material usado na disciplina MC322 - Programação orientada a objetos.
+ * 
+ * A documentação para javadoc deste arquivo foi feita com o uso de IA
+ * e posteriormente revisada e/ou corrigida.
+ */
 package lab03.GUI;
 
 import java.io.IOException;
@@ -18,7 +26,20 @@ import javafx.stage.Stage;
 import lab03.Gerenciadora;
 import lab03.OfertaIngresso;
 
+/**
+ * Controlador JavaFX para a tela do Marketplace.
+ * Responsável por exibir as ofertas de ingressos, mostrar o saldo do usuário
+ * logado e lidar com as ações de compra e navegação para a tela de venda de ingressos.
+ * Herda de {@link GeralController} para funcionalidades de navegação comuns.
+ * 
+ * @author Vinícius de Oliveira - 251527
+ */
 public class MarketplaceController extends GeralController {
+
+    /**
+     * Construtor padrão da classe. (Para remover aviso do javadoc)
+     */
+    public MarketplaceController(){}
 
     @FXML
     private Label labelSaldo;
@@ -35,8 +56,13 @@ public class MarketplaceController extends GeralController {
     @FXML
     private ListView<OfertaIngresso> listOfertaIngressos;
 
+    /**
+     * Método de inicialização chamado automaticamente após o FXML ter sido carregado.
+     * Configura a tela, exibindo o saldo do usuário logado e carregando as ofertas
+     * de ingressos disponíveis no marketplace na ListView.
+     */
     @FXML
-    public void initialize() {
+    private void initialize() {
         Gerenciadora gerenciadora = Gerenciadora.getInstance();
 
         Double saldoUsuario = gerenciadora.getUsuarioAtual().getSaldo();
@@ -48,8 +74,18 @@ public class MarketplaceController extends GeralController {
         listOfertaIngressos.setItems(observableIngressos);
     }
     
+    /**
+     * Manipula o evento de clique no botão de comprar ingresso.
+     * Verifica se um ingresso foi selecionado, tenta processar a compra
+     * através da gerenciadora e atualiza a GUI (saldo e lista de ofertas)
+     * após a tentativa de compra. Exibe mensagens de erro se a compra falhar.
+     * Este método é anotado com @FXML e deve ser vinculado a um elemento na GUI.
+     *
+     * @param event O ActionEvent que disparou este manipulador.
+     * @throws IOException Se ocorrer um erro inesperado durante a execução (embora não diretamente relacionado a carga de FXML aqui).
+     */
     @FXML
-    void handleComprarIngresso(ActionEvent event) throws IOException {
+    private void handleComprarIngresso(ActionEvent event) throws IOException {
         Gerenciadora gerenciadora = Gerenciadora.getInstance();
         OfertaIngresso ingressoSelecionado = listOfertaIngressos.getSelectionModel().getSelectedItem();
         if (ingressoSelecionado == null) labelErro.setText("Nenhum ingresso selecionado");
@@ -63,12 +99,16 @@ public class MarketplaceController extends GeralController {
         initialize();
     }
 
-    private Stage getStage(ActionEvent event) {
-        return (Stage) ((javafx.scene.Node)event.getSource()).getScene().getWindow();
-    }
-    
+    /**
+     * Manipula o evento de clique no botão para acessar a tela de venda de ingresso.
+     * Carrega e exibe a tela onde o usuário pode listar um ingresso para venda no marketplace.
+     * Este método é anotado com @FXML e deve ser vinculado a um elemento na GUI.
+     *
+     * @param event O ActionEvent que disparou este manipulador.
+     * @throws IOException Se ocorrer um erro ao carregar o arquivo FXML da tela de oferta de ingresso.
+     */
     @FXML
-    void handleAcessarVendaIngresso(ActionEvent event) throws IOException {
+    private void handleAcessarVendaIngresso(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/OferecerIngressoWindow.fxml"));
         Scene scene = new Scene(root);
         Stage stage = getStage(event);

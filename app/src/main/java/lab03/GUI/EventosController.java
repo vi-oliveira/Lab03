@@ -1,3 +1,11 @@
+/*
+ * EventosController.java
+ * 
+ * Material usado na disciplina MC322 - Programação orientada a objetos.
+ * 
+ * A documentação para javadoc deste arquivo foi feitacom o uso de IA
+ * e posteriormente revisada e/ou corrigida.
+ */
 package lab03.GUI;
 
 import java.io.IOException;
@@ -17,7 +25,21 @@ import javafx.stage.Stage;
 import lab03.Gerenciadora;
 import lab03.Eventos.Evento;
 
+/**
+ * Controlador JavaFX para a tela de listagem de Eventos.
+ * Responsável por exibir a lista de todos os eventos disponíveis no sistema
+ * e permitir que o usuário selecione um evento para ver seus detalhes em uma
+ * tela específica.
+ * Herda de {@link GeralController} para funcionalidades de navegação comuns.
+ * 
+ * @author Vinícius de Oliveira - 251527
+ */
 public class EventosController extends GeralController {
+
+    /**
+     * Construtor padrão da classe. (Para remover aviso do javadoc)
+     */
+    public EventosController(){}
 
     @FXML
     private Button BotaoSelecionar;
@@ -28,8 +50,13 @@ public class EventosController extends GeralController {
     @FXML
     private ListView<Evento> listEventos;
 
+    /**
+     * Método de inicialização chamado automaticamente após o FXML ter sido carregado.
+     * Obtém a lista de eventos do histórico através da {@link Gerenciadora}
+     * e popula a {@link #listEventos} com esses eventos.
+     */
     @FXML
-    public void initialize() {
+    private void initialize() {
         Gerenciadora gerenciadora = Gerenciadora.getInstance();
 
         List<Evento> eventos = gerenciadora.getHistorico().getEventos();
@@ -37,12 +64,18 @@ public class EventosController extends GeralController {
         listEventos.setItems(observableEventos);
     }
     
-    private Stage getStage(ActionEvent event) {
-        return (Stage) ((javafx.scene.Node)event.getSource()).getScene().getWindow();
-    }
-    
+    /**
+     * Manipula o evento de clique no botão "Selecionar".
+     * Obtém o evento selecionado na {@link #listEventos}. Se nenhum evento for selecionado,
+     * exibe uma mensagem de erro. Caso contrário, carrega a tela de "Evento Específico",
+     * passa o evento selecionado para o controlador dessa tela e navega para ela.
+     * Este método é anotado com @FXML e deve ser vinculado a um elemento na GUI.
+     *
+     * @param event O ActionEvent que disparou este manipulador.
+     * @throws IOException Se ocorrer um erro ao carregar o arquivo FXML da tela de evento específico.
+     */
     @FXML
-    void handleAcessarEventoEspecifico(ActionEvent event) throws IOException {
+    private void handleAcessarEventoEspecifico(ActionEvent event) throws IOException {
         Evento eventoSelEvento = listEventos.getSelectionModel().getSelectedItem();
         if (eventoSelEvento == null) labelErro.setText("Nenhum evento selecionado");
         else {     

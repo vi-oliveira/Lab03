@@ -1,3 +1,11 @@
+/*
+ * OferecerIngressoController.java
+ * 
+ * Material usado na disciplina MC322 - Programação orientada a objetos.
+ * 
+ * A documentação para javadoc deste arquivo foi feita com o uso de IA
+ * e posteriormente revisada e/ou corrigida.
+ */
 package lab03.GUI;
 
 import java.io.IOException;
@@ -7,20 +15,29 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import lab03.Gerenciadora;
 import lab03.Ingresso;
 import lab03.Clientes.Cliente;
 import lab03.Exceptions.IngressoNaoPertenceAoClienteException;
 
+/**
+ * Controlador JavaFX para a tela de Oferecer Ingresso para Venda.
+ * Responsável por exibir os ingressos que o usuário logado possui e permitir
+ * que ele os liste no marketplace a um determinado preço.
+ * Herda de {@link GeralController} para funcionalidades de navegação comuns.
+ * 
+ * @author Vinícius de Oliveira - 251527
+ */
 public class OferecerIngressoController extends GeralController {
+
+    /**
+     * Construtor padrão da classe. (Para remover aviso do javadoc)
+     */
+    public OferecerIngressoController(){}
 
     @FXML
     private Label labelErro;
@@ -34,8 +51,13 @@ public class OferecerIngressoController extends GeralController {
     @FXML
     private TextField textFieldValor;
 
+    /**
+     * Método de inicialização chamado automaticamente após o FXML ter sido carregado.
+     * Configura a tela, carregando e exibindo os ingressos que o usuário logado
+     * possui na ListView.
+     */
     @FXML
-    public void initialize() {
+    private void initialize() {
         Gerenciadora gerenciadora = Gerenciadora.getInstance();
         Cliente usuario = gerenciadora.getUsuarioAtual();
 
@@ -43,23 +65,32 @@ public class OferecerIngressoController extends GeralController {
         ObservableList<Ingresso> observableIngressos = FXCollections.observableArrayList(ingressos);
         listIngressos.setItems(observableIngressos);
     }
-
-    private Stage getStage(ActionEvent event) {
-        return (Stage) ((javafx.scene.Node)event.getSource()).getScene().getWindow();
-    }
     
+    /**
+     * Manipula o evento de clique para voltar para a tela do Marketplace.
+     * Reutiliza o método de navegação da classe pai {@link GeralController#handleAcessoMarketPlace(ActionEvent)}.
+     * Este método é anotado com @FXML e deve ser vinculado a um elemento na UI.
+     *
+     * @param event O ActionEvent que disparou este manipulador.
+     * @throws Exception Se ocorrer um erro durante a navegação (propagado do método da classe pai).
+     */
     @FXML
-    void handleVoltarAoMarketplace(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/MarketplaceWindow.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = getStage(event);
-        scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
-        stage.setScene(scene);
-        stage.setTitle("Vender ingresso");
+    private void handleVoltarAoMarketplace(ActionEvent event) throws Exception {
+        handleAcessoMarketPlace(event);
     }
 
+    /**
+     * Pega o ingresso selecionado na lista, o preço digitado no campo de texto,
+     * valida a entrada do preço e tenta oferecer o ingresso para venda no marketplace
+     * através da gerenciadora. Atualiza a GUI e exibe mensagens de erro em
+     * caso de falha (input inválido, ingresso não pertencente ao usuário).
+     * Este método é anotado com @FXML e deve ser vinculado a um elemento na GUI.
+     *
+     * @param event O ActionEvent que disparou este manipulador.
+     * @throws IOException Se ocorrer um erro inesperado durante a execução.
+     */
     @FXML
-    void handleOferecerIngresso(ActionEvent event) throws IOException {
+    private void handleOferecerIngresso(ActionEvent event) throws IOException {
         Gerenciadora gerenciadora = Gerenciadora.getInstance();
         Cliente vendedor = gerenciadora.getUsuarioAtual();
 
