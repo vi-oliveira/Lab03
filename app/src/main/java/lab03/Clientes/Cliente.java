@@ -60,12 +60,30 @@ public class Cliente implements CompararA {
         this.notificacoesEnviadas = new ArrayList<Notificavel>();
     }
 
+    /**
+    * Oferece um ingresso para venda em um marketplace.
+    * O cliente deve possuir o ingresso para poder colocá-lo à venda.
+    *
+    * @param ingresso O ingresso a ser oferecido para venda.
+    * @param precoPedido O preço pelo qual o cliente deseja vender o ingresso.
+    * @param marketplace O marketplace onde o ingresso será oferecido.
+    * @throws IngressoNaoPertenceAoClienteException Se o cliente não possuir o ingresso especificado.
+    */
     public void oferecerIngressoParaVenda(Ingresso ingresso, double precoPedido, Marketplace marketplace) 
     throws IngressoNaoPertenceAoClienteException {
         if(!this.ingressos.contains(ingresso)) throw new IngressoNaoPertenceAoClienteException("Você não tem esse ingresso");
         marketplace.receberOFerta(this, ingresso, precoPedido);
     }
 
+    /**
+    * Realiza a compra de um ingresso listado como oferta em um marketplace.
+    * A compra só é possível se o cliente tiver saldo suficiente e a oferta existir no marketplace.
+    *
+    * @param oferta A oferta de ingresso que o cliente deseja comprar.
+    * @param marketplace O marketplace onde a oferta está listada.
+    * @throws SaldoInsuficienteException Se o cliente não possuir saldo suficiente para a compra.
+    * @throws OfertaNaoEncontradaException Se a oferta especificada não for encontrada no marketplace.
+    */
     public void comprarIngressoNoMarketplace(OfertaIngresso oferta, Marketplace marketplace)
     throws SaldoInsuficienteException, OfertaNaoEncontradaException {
         if(this.saldo < oferta.getPrecoPedido()) throw new SaldoInsuficienteException("Saldo insuficiente");

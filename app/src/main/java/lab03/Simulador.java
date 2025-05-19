@@ -1,3 +1,11 @@
+/*
+ * Simulador.java
+ * 
+ * Material usado na disciplina MC322 - Programação orientada a objetos.
+ * 
+ * A documentação para javadoc deste arquivo foi com o uso de Ia
+ * e posteriormente revisada e/ou corrigida.
+ */
 package lab03;
 
 import java.time.LocalDate;
@@ -12,9 +20,25 @@ import lab03.Eventos.EventoShow;
 import lab03.Eventos.ImobiliariaDeEventos;
 import lab03.Eventos.Organizadora;
 
+/**
+ * A classe Simulador é responsável por popular a aplicação com dados de exemplo
+ * para fins de teste e demonstração. Ela simula a criação de imobiliárias,
+ * locais, eventos, clientes e vendas de ingressos.
+ * 
+ * @author Vinícius de Oliveira - 251527
+ */
 public class Simulador {
+    /**
+     * Construtor padrão para a classe Simulador.
+     */
     public Simulador(){}
 
+    /**
+     * Simula a criação de uma imobiliária e adiciona locais a ela,
+     * em seguida, adiciona a imobiliária à gerenciadora.
+     *
+     * @param gerenciadora A instância de Gerenciadora onde a imobiliária e locais serão adicionados.
+     */
     private void SimularImobiliariaELocais(Gerenciadora gerenciadora) {
         ImobiliariaDeEventos imobiliaria = new ImobiliariaDeEventos("Super Eventos");
 
@@ -31,6 +55,12 @@ public class Simulador {
         gerenciadora.getImobiliarias().add(imobiliaria);
     }
 
+    /**
+     * Simula a criação de uma organizadora e diversos eventos (shows e jogos),
+     * aloca locais para esses eventos e cria ingressos comuns disponíveis.
+     *
+     * @param gerenciadora A instância de Gerenciadora onde a organizadora, eventos e ingressos serão adicionados.
+     */
     private void SimularEventos(Gerenciadora gerenciadora) {
         Organizadora superEventos = new Organizadora("Super Eventos",
         12345678, "Rua Adalberto Einstein nº321");
@@ -72,6 +102,12 @@ public class Simulador {
 
     }
 
+    /**
+     * Simula a criação de clientes e adiciona-os à gerenciadora.
+     * Também simula a venda de alguns ingressos para esses clientes.
+     *
+     * @param gerenciadora A instância de Gerenciadora onde os clientes e vendas serão processados.
+     */
     private void SimularClientes(Gerenciadora gerenciadora) {
         Cliente alonso = new Cliente("Alonso", "Alonso@gmail.com", "senha", "1234-4321", 250.0);
         Cliente ana = new Cliente("Ana", "anana@unicamp.com", "qsdsijf", "9876-6789", 343000000000.0);
@@ -82,8 +118,6 @@ public class Simulador {
         gerenciadora.getCLientes().put(ana.getEmail(), ana);
         gerenciadora.getCLientes().put(gabriela.getEmail(), gabriela);
         gerenciadora.getCLientes().put(cliente.getEmail(), cliente);
-
-        gerenciadora.setUsuarioAtual(null);
 
         // Como o exemplo é planejado à mão, os erros não vão ocorrer, então não é necessário colocar nada no catch
         try {
@@ -97,6 +131,12 @@ public class Simulador {
         } catch (Exception e) {}
     }
 
+    /**
+     * Simula a listagem de um ingresso no marketplace por um cliente.
+     * Assume que o cliente "Alonso@gmail.com" existe e possui ingressos.
+     *
+     * @param gerenciadora A instância de Gerenciadora contendo o marketplace.
+     */
     private void SimularMarketplace(Gerenciadora gerenciadora) {
         Cliente vendedor = gerenciadora.getCLientes().get("Alonso@gmail.com");
         try{
@@ -104,6 +144,13 @@ public class Simulador {
         } catch (Exception e) {}
     }
     
+    /**
+     * Executa toda a simulação, populando a Gerenciadora com dados de exemplo
+     * de imobiliárias, locais, eventos, clientes e vendas de ingressos,
+     * incluindo uma listagem no marketplace.
+     *
+     * @param gerenciadora A instância de Gerenciadora a ser populada com os dados simulados.
+     */
     public void Simular(Gerenciadora gerenciadora) {
         SimularImobiliariaELocais(gerenciadora);
         SimularEventos(gerenciadora);

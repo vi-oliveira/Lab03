@@ -208,6 +208,12 @@ public abstract class Evento {
 
     }
 
+    /**
+     * Retorna uma representação em string deste evento,
+     * formatada para exibição.
+     *
+     * @return Uma string descrevendo o evento.
+     */
     @Override
     public String toString(){
         return this.caracteristicas.getNome();

@@ -52,6 +52,12 @@ public class Ingresso {
         this.evento = evento;
     }
 
+    /**
+     * Retorna uma representação em string deste ingresso,
+     * formatada para exibição.
+     *
+     * @return Uma string descrevendo o ingresso.
+     */
     @Override
     public String toString(){
         DecimalFormat decimalFormat = new DecimalFormat("#.00"); 
