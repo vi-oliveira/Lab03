@@ -68,12 +68,17 @@ public class Simulador {
         gerenciadora.getOrganizadoras().add(superEventos);
 
         EventoShow showAzul = superEventos.criarEvento("Caneta Azul",
-        200, LocalDate.of(2025, 4, 29), "Manoel Gomes", gerenciadora.getHistorico());
+        200, LocalDate.of(2025, 4, 29),
+        "Manoel Gomes", gerenciadora.getHistorico());
+
         EventoShow showMichael = superEventos.criarEvento("Biridin",
-        400, LocalDate.of(2025,12, 15), "Michael Jackson", gerenciadora.getHistorico());
+        400, LocalDate.of(2025,12, 15),
+        "Michael Jackson", gerenciadora.getHistorico());
+
         List<String> times = new ArrayList<String>(Arrays.asList("time1", "time2"));
         EventoJogo jogoEsporte = superEventos.criarEvento("Evento esportivo",
-        1100, LocalDate.of(2026, 6, 30), times, gerenciadora.getHistorico());
+        1100, LocalDate.of(2026, 6, 30),
+        times, gerenciadora.getHistorico());
         
         /*  Para exemplo, como só existe uma imobiliaria cadastrada, na simulação
         basta apenas pegar a imobiliaria no indice 0*/
@@ -109,17 +114,22 @@ public class Simulador {
      * @param gerenciadora A instância de Gerenciadora onde os clientes e vendas serão processados.
      */
     private void SimularClientes(Gerenciadora gerenciadora) {
-        Cliente alonso = new Cliente("Alonso", "Alonso@gmail.com", "senha", "1234-4321", 250.0);
-        Cliente ana = new Cliente("Ana", "anana@unicamp.com", "qsdsijf", "9876-6789", 343000000000.0);
-        Cliente gabriela = new Cliente("Gabriela", "EEEMAIL@gmail.com", "294748292", "9999-1111", 750.0);
-        Cliente cliente = new Cliente("cliente1", "email", "123", "1029-3847", 1000.0);
+        Cliente alonso = new Cliente(
+            "Alonso", "Alonso@gmail.com", "senha", "1234-4321", 250.0);
+        Cliente ana = new Cliente(
+            "Ana", "anana@unicamp.com", "qsdsijf", "9876-6789", 343000000000.0);
+        Cliente gabriela = new Cliente(
+            "Gabriela", "EEEMAIL@gmail.com", "294748292", "9999-1111", 750.0);
+        Cliente cliente = new Cliente(
+            "cliente1", "email", "123", "1029-3847", 1000.0);
 
         gerenciadora.getCLientes().put(alonso.getEmail(), alonso);
         gerenciadora.getCLientes().put(ana.getEmail(), ana);
         gerenciadora.getCLientes().put(gabriela.getEmail(), gabriela);
         gerenciadora.getCLientes().put(cliente.getEmail(), cliente);
 
-        // Como o exemplo é planejado à mão, os erros não vão ocorrer, então não é necessário colocar nada no catch
+        // Como o exemplo é planejado à mão, os erros não vão ocorrer,
+        // então não é necessário colocar nada no catch.
         try {
             Evento showAzul = gerenciadora.getHistorico().getEventos().get(0);
             Ingresso ingressoAzul = gerenciadora.getIngressosComunsDisponiveis().get(0);
@@ -140,7 +150,10 @@ public class Simulador {
     private void SimularMarketplace(Gerenciadora gerenciadora) {
         Cliente vendedor = gerenciadora.getCLientes().get("Alonso@gmail.com");
         try{
-            vendedor.oferecerIngressoParaVenda(vendedor.getIngressos().get(0), 100.0, gerenciadora.getMarketplace());
+            vendedor.oferecerIngressoParaVenda(
+                vendedor.getIngressos().get(0),
+                100.0,
+                gerenciadora.getMarketplace());
         } catch (Exception e) {}
     }
     

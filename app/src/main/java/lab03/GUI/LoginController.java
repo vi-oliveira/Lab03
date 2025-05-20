@@ -69,7 +69,8 @@ public class LoginController extends GeralController {
         Cliente clienteLogin = gerenciadora.getCLientes().get(email);
         if (clienteLogin == null) labelAviso.setText("email ou senha incorretos");
         else {
-            if (email.equals(clienteLogin.getEmail()) && senha.equals(clienteLogin.getSenha())){
+            if (email.equals(clienteLogin.getEmail())
+            && senha.equals(clienteLogin.getSenha())) {
                 gerenciadora.setUsuarioAtual(clienteLogin);
                 handleVoltarAoMenu(event);
             } else{

@@ -72,6 +72,9 @@ public class MarketplaceController extends GeralController {
         List<OfertaIngresso> ingressos = gerenciadora.getMarketplace().listarOfertas();
         ObservableList<OfertaIngresso> observableIngressos = FXCollections.observableArrayList(ingressos);
         listOfertaIngressos.setItems(observableIngressos);
+
+        if (ingressos.size() == 0)
+            labelErro.setText("Nenhum ingresso disponível");
     }
     
     /**
@@ -91,7 +94,8 @@ public class MarketplaceController extends GeralController {
         if (ingressoSelecionado == null) labelErro.setText("Nenhum ingresso selecionado");
         else {
             try {
-                gerenciadora.getUsuarioAtual().comprarIngressoNoMarketplace(ingressoSelecionado, gerenciadora.getMarketplace());
+                gerenciadora.getUsuarioAtual().comprarIngressoNoMarketplace(
+                    ingressoSelecionado, gerenciadora.getMarketplace());
             } catch (Exception e){
                 labelErro.setText(e.getMessage());
             }
@@ -109,10 +113,12 @@ public class MarketplaceController extends GeralController {
      */
     @FXML
     private void handleAcessarVendaIngresso(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/OferecerIngressoWindow.fxml"));
+        Parent root = FXMLLoader.load(
+            getClass().getResource("/OferecerIngressoWindow.fxml"));
         Scene scene = new Scene(root);
         Stage stage = getStage(event);
-        scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
+        scene.getStylesheets().add(
+            getClass().getResource("/EstiloPadrao.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Vender ingresso");
     }

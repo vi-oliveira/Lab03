@@ -103,6 +103,9 @@ public class EventoEspecificoController extends GeralController {
         List<Ingresso> ingressosDoEvento = SelecionarIngressosDoEvento();
         ObservableList<Ingresso> observableIngressos = FXCollections.observableArrayList(ingressosDoEvento);
         listIngressos.setItems(observableIngressos);
+
+        if (ingressosDoEvento.size() == 0)
+            labelErro.setText("Nenhum ingresso disponível");
     }
 
     /**
@@ -140,7 +143,8 @@ public class EventoEspecificoController extends GeralController {
         if (ingressoSelecionado == null) labelErro.setText("Nenhum ingresso selecionado");
         else {
             try {
-                gerenciadora.venderIngressoFormaComum(eventoAtual, ingressoSelecionado, gerenciadora.getUsuarioAtual());
+                gerenciadora.venderIngressoFormaComum(
+                    eventoAtual, ingressoSelecionado, gerenciadora.getUsuarioAtual());
             } catch (Exception e){
                 labelErro.setText(e.getMessage());
             }

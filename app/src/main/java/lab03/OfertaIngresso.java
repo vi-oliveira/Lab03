@@ -72,6 +72,8 @@ public class OfertaIngresso {
     @Override
     public String toString(){
         DecimalFormat decimalFormat = new DecimalFormat("#.00"); 
-        return "Ingresso de " + this.vendedor.getNome() + " para: " + this.ingresso.getEvento().getNome() + "  -  R$" + decimalFormat.format(this.precoPedido);
+        return "Ingresso de " + this.vendedor.getNome()
+        + " para: " + this.ingresso.getEvento().getNome()
+        + "  -  R$" + decimalFormat.format(this.precoPedido);
     }
 }

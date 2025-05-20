@@ -79,7 +79,8 @@ public class EventosController extends GeralController {
         Evento eventoSelEvento = listEventos.getSelectionModel().getSelectedItem();
         if (eventoSelEvento == null) labelErro.setText("Nenhum evento selecionado");
         else {     
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/EventoEspecificoWindow.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/EventoEspecificoWindow.fxml"));
             Parent root = loader.load();
     
             EventoEspecificoController eventoEspecificoController = loader.getController();
@@ -87,7 +88,8 @@ public class EventosController extends GeralController {
     
             Scene scene = new Scene(root);
             Stage stage = getStage(event);
-            scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
+            scene.getStylesheets().add(
+                getClass().getResource("/EstiloPadrao.css").toExternalForm());
             stage.setScene(scene);
             stage.setTitle("Menu");
         }

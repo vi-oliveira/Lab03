@@ -57,14 +57,19 @@ public class DevController {
         Gerenciadora gerenciadora = Gerenciadora.getInstance();
         Marketplace marketplace = gerenciadora.getMarketplace();
 
-        String infoMarketplace = " - comissões: " + marketplace.getSaldoComissao() + "; qtdOFertasDisponíveis: " +  marketplace.listarOfertas().size();
+        String infoMarketplace = " - comissões: " + marketplace.getSaldoComissao()
+        + "; qtdOFertasDisponíveis: " +  marketplace.listarOfertas().size();
+        
         labelInfoMarketplace.setText(infoMarketplace);
 
         DecimalFormat decimalFormat = new DecimalFormat("#.00"); 
         List<String> infoClientes = new ArrayList<String>();
         String infoCliente = null;
         for (Cliente cliente : gerenciadora.getCLientes().values()){
-            infoCliente = cliente.getNome() + " - Saldo: " + decimalFormat.format(cliente.getSaldo()) + " - qtdIngressos: " + cliente.getIngressos().size();
+            infoCliente = cliente.getNome() + " - Saldo: "
+            + decimalFormat.format(cliente.getSaldo())
+            + " - qtdIngressos: " + cliente.getIngressos().size();
+
             infoClientes.add(infoCliente);
         }
 

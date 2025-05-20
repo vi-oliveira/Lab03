@@ -100,7 +100,8 @@ public class OferecerIngressoController extends GeralController {
             try {
                 String precoDigitado = textFieldValor.getText();
                 Double precoPedido = Double.parseDouble(precoDigitado);
-                vendedor.oferecerIngressoParaVenda(ingressoSelecionado, precoPedido, gerenciadora.getMarketplace());
+                vendedor.oferecerIngressoParaVenda(
+                    ingressoSelecionado, precoPedido, gerenciadora.getMarketplace());
                 textFieldValor.setText("");
                 initialize();
             } catch (NumberFormatException e) {

@@ -56,10 +56,12 @@ public class GeralController {
      */
     @FXML
     protected void handleVoltarAoMenu(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/MenuWindow.fxml"));
+        Parent root = FXMLLoader.load(
+            getClass().getResource("/MenuWindow.fxml"));
         Scene scene = new Scene(root);
         Stage stage = getStage(event);
-        scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
+        scene.getStylesheets().add(
+            getClass().getResource("/EstiloPadrao.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Menu");
     }
@@ -73,10 +75,12 @@ public class GeralController {
      */
     @FXML
     protected void handleAcessoEventos(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/EventosWindow.fxml"));
+        Parent root = FXMLLoader.load(
+            getClass().getResource("/EventosWindow.fxml"));
         Scene scene = new Scene(root);
         Stage stage = getStage(event);
-        scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
+        scene.getStylesheets().add(
+            getClass().getResource("/EstiloPadrao.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Eventos");
     }
@@ -90,10 +94,12 @@ public class GeralController {
      */
     @FXML
     protected void handleAcessoMarketPlace(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/MarketplaceWindow.fxml"));
+        Parent root = FXMLLoader.load(
+            getClass().getResource("/MarketplaceWindow.fxml"));
         Scene scene = new Scene(root);
         Stage stage = getStage(event);
-        scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
+        scene.getStylesheets().add(
+            getClass().getResource("/EstiloPadrao.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Marketplace");
     }
@@ -107,10 +113,12 @@ public class GeralController {
      */
     @FXML
     protected void handleAcessoPerfil(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/PerfilWindow.fxml"));
+        Parent root = FXMLLoader.load(
+            getClass().getResource("/PerfilWindow.fxml"));
         Scene scene = new Scene(root);
         Stage stage = getStage(event);
-        scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
+        scene.getStylesheets().add(
+            getClass().getResource("/EstiloPadrao.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Perfil");
     }
@@ -124,10 +132,12 @@ public class GeralController {
      */
     @FXML
     protected void handleAcessoLogin(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/LoginWindow.fxml"));
+        Parent root = FXMLLoader.load(
+            getClass().getResource("/LoginWindow.fxml"));
         Scene scene = new Scene(root);
         Stage stage = getStage(event);
-        scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
+        scene.getStylesheets().add(
+            getClass().getResource("/EstiloPadrao.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Eventos");
     }
@@ -141,10 +151,12 @@ public class GeralController {
      */
     @FXML
     protected void handleAcessoNovoCliente(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/NovoClienteWindow.fxml"));
+        Parent root = FXMLLoader.load(
+            getClass().getResource("/NovoClienteWindow.fxml"));
         Scene scene = new Scene(root);
         Stage stage = getStage(event);
-        scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
+        scene.getStylesheets().add(
+            getClass().getResource("/EstiloPadrao.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Eventos");
     }
@@ -159,12 +171,14 @@ public class GeralController {
      */
     @FXML
     protected void handleAcessoDev(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dev/DevWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(
+            getClass().getResource("/Dev/DevWindow.fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-        scene.getStylesheets().add(getClass().getResource("/Dev/EstiloDev.css").toExternalForm());
+        scene.getStylesheets().add(
+            getClass().getResource("/Dev/EstiloDev.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Menu de desenvolvimento");
         stage.show();

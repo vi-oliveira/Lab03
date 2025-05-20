@@ -61,6 +61,7 @@ public class Ingresso {
     @Override
     public String toString(){
         DecimalFormat decimalFormat = new DecimalFormat("#.00"); 
-        return "Ingresso para: " + this.evento.getNome() + "  -  R$" + decimalFormat.format(this.preco);
+        return "Ingresso para: " + this.evento.getNome()
+        + "  -  R$" + decimalFormat.format(this.preco);
     }
 }

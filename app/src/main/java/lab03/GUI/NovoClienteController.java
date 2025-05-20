@@ -98,27 +98,34 @@ public class NovoClienteController extends GeralController {
     void handleCriarNovoCliente(ActionEvent event) throws IOException {
         Gerenciadora gerenciadora = Gerenciadora.getInstance();
         // Todos os campos devem estar preenchidos
+
+        String mensagemCamposVazios = "Existe(m) campo(s) vazio(s)";
         try {
             String nome = textFieldNome.getText();
-            if (nome == null || nome.trim().isEmpty()) throw new IllegalArgumentException("Existe(m) campo(s) vazio(s)");
+            if (nome == null || nome.trim().isEmpty()) 
+                throw new IllegalArgumentException(mensagemCamposVazios);
 
             String email = textFieldEmail.getText();
-            if (email == null || email.trim().isEmpty()) throw new IllegalArgumentException("Existe(m) campo(s) vazio(s)");
+            if (email == null || email.trim().isEmpty())
+                throw new IllegalArgumentException(mensagemCamposVazios);
 
             String telefone = textFieldTelefone.getText();
-            if (telefone == null || telefone.trim().isEmpty()) throw new IllegalArgumentException("Existe(m) campo(s) vazio(s)");
+            if (telefone == null || telefone.trim().isEmpty())
+                throw new IllegalArgumentException(mensagemCamposVazios);
 
             String senha = passwordFieldSenha.getText();
-            if (senha == null || senha.trim().isEmpty()) throw new IllegalArgumentException("Existe(m) campo(s) vazio(s)");
+            if (senha == null || senha.trim().isEmpty())
+                throw new IllegalArgumentException(mensagemCamposVazios);
 
             String saldoDigitado = textFieldSaldo.getText();
             Double saldo = Double.parseDouble(saldoDigitado);
-            if (saldo < 0) throw new IllegalArgumentException("O valor do saldo deve ser positivo");
+            if (saldo < 0)
+                throw new IllegalArgumentException("O valor do saldo deve ser positivo");
             
             // Verifica se o email já existe
-            if (gerenciadora.getCLientes().containsKey(email)) {
+            if (gerenciadora.getCLientes().containsKey(email))
                 throw new IllegalArgumentException("Já existe um cliente cadastrado com este email.");
-            }
+            
 
             Cliente novoCliente = new Cliente(nome, email, senha, telefone, saldo);
             gerenciadora.getCLientes().put(novoCliente.getEmail(), novoCliente);

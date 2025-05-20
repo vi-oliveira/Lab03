@@ -106,13 +106,15 @@ public class PerfilController extends GeralController {
      */
     @FXML
     private void handleJanelaDepositar(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DepositoWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(
+            getClass().getResource("/DepositoWindow.fxml"));
         Parent root = loader.load();
         DepositoController depositoController = loader.getController();
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-        scene.getStylesheets().add(getClass().getResource("/EstiloPadrao.css").toExternalForm());
+        scene.getStylesheets().add(
+            getClass().getResource("/EstiloPadrao.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Depositar");
         stage.show();
