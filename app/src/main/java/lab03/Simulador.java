@@ -56,7 +56,7 @@ public class Simulador {
     }
 
     /**
-     * Simula a criação de uma organizadora e diversos eventos (shows e jogos),
+     * Simula a criação de duas organizadoras e diversos eventos (shows e jogos),
      * aloca locais para esses eventos e cria ingressos comuns disponíveis.
      *
      * @param gerenciadora A instância de Gerenciadora onde a organizadora, eventos e ingressos serão adicionados.
@@ -64,8 +64,11 @@ public class Simulador {
     private void SimularEventos(Gerenciadora gerenciadora) {
         Organizadora superEventos = new Organizadora("Super Eventos",
         12345678, "Rua Adalberto Einstein nº321");
+        Organizadora megaEventos = new Organizadora("Mega Eventos",
+        87654321, "Rua Tikola Nesla nº123");
 
         gerenciadora.getOrganizadoras().add(superEventos);
+        gerenciadora.getOrganizadoras().add(megaEventos);
 
         EventoShow showAzul = superEventos.criarEvento("Caneta Azul",
         200, LocalDate.of(2025, 4, 29),
@@ -76,7 +79,7 @@ public class Simulador {
         "Michael Jackson", gerenciadora.getHistorico());
 
         List<String> times = new ArrayList<String>(Arrays.asList("time1", "time2"));
-        EventoJogo jogoEsporte = superEventos.criarEvento("Evento esportivo",
+        EventoJogo jogoEsporte = megaEventos.criarEvento("Evento esportivo",
         1100, LocalDate.of(2026, 6, 30),
         times, gerenciadora.getHistorico());
         
